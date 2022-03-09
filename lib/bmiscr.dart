@@ -1,3 +1,8 @@
+
+
+import 'dart:math';
+
+import 'package:bmi_calc2/result.dart';
 import 'package:flutter/material.dart';
 
 class Bmisc extends StatefulWidget {
@@ -12,6 +17,7 @@ int old = 12;
 int weigh = 40;
 bool Ismale = true;
 Color color1 = Colors.blue;
+double result =  0;
 
 class _BmiscState extends State<Bmisc> {
   @override
@@ -172,6 +178,7 @@ class _BmiscState extends State<Bmisc> {
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
                                     FloatingActionButton(
+                                      heroTag:"weigh --",
                                       child: Icon(
                                         Icons.remove,
                                         size: 25,
@@ -196,6 +203,7 @@ class _BmiscState extends State<Bmisc> {
                                       ),
                                     ),
                                     FloatingActionButton(
+                                      heroTag:"weigh ++",
                                       child: Icon(
                                         Icons.add,
                                         size: 25,
@@ -243,6 +251,7 @@ class _BmiscState extends State<Bmisc> {
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
                                     FloatingActionButton(
+                                      heroTag: "old--",
                                       child: Icon(
                                         Icons.remove,
                                         size: 25,
@@ -267,6 +276,7 @@ class _BmiscState extends State<Bmisc> {
                                       ),
                                     ),
                                     FloatingActionButton(
+                                      heroTag: "old++",
                                       child: Icon(
                                         Icons.add,
                                         size: 25,
@@ -287,7 +297,20 @@ class _BmiscState extends State<Bmisc> {
                 ),
               )),
           TextButton(
-            onPressed: () {},
+            onPressed: () {
+              result = weigh / pow(valuem/100, 2);
+              print(result);
+              Navigator.push(context,
+              MaterialPageRoute(builder: (context) => resultsc(
+                result: result.round()
+                ,old: old
+                ,
+                height: valuem.round() ,weigh: weigh,
+                Ismale: Ismale,
+              ) 
+              ),
+              );
+            },
             child: Container(
                 width: double.infinity,
                 height: 35,
