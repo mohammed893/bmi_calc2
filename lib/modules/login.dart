@@ -1,3 +1,4 @@
+import 'package:bmi_calc2/shared/components/components.dart';
 import 'package:flutter/material.dart';
 
 class LoginScreen extends StatelessWidget {
@@ -85,6 +86,13 @@ class LoginScreen extends StatelessWidget {
                     ),
                   ),
                 ),
+                def_button( title: "helloooo" , func: (){
+                  print("hello boi");
+                }),
+                def_button( title: "iam here" , func: (){
+                  // ignore: avoid_print
+                  print("hello boi");
+                }),
                 SizedBox(
                   height: 10.0,
                 ),
