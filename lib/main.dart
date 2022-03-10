@@ -1,4 +1,4 @@
-import 'package:bmi_calc2/bmiscr.dart';
+import 'package:bmi_calc2/modules/bmiscr.dart';
 import 'package:flutter/material.dart';
 
 void main() {
