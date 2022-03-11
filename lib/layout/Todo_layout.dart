@@ -28,12 +28,17 @@ class _Todo_layoutState extends State<Todo_layout> {
         ],
         type: BottomNavigationBarType.fixed,
         currentIndex: index,
-        onTap: (value) {
+        onTap: (value) async {
           index = value;
           setState(() {});
+          print(await Getsnum());
         },
       ),
       body: toggled_widgets[index],
     );
+  }
+  Future <int> Getsnum() async
+  {
+  return 123;
   }
 }
