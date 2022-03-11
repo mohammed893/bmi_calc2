@@ -41,4 +41,15 @@ class _Todo_layoutState extends State<Todo_layout> {
   {
   return 123;
   }
+  void Makedb ()
+  {
+  }
+  void InserttoDB ()
+  {
+
+  }
+  void DeletsFromDB ()
+  {
+
+  }
 }
