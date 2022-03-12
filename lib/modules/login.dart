@@ -46,6 +46,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       }return null;
                       
                     }, 
+                    
                     controller: emailController,
                     keyboardType: TextInputType.emailAddress,
                     onFieldSubmitted: (String value) {
@@ -114,7 +115,8 @@ class _LoginScreenState extends State<LoginScreen> {
                     func: () {
                       if (formkey.currentState!.validate()){
                       print(emailController.text);
-                      print(passwordController.text);}
+                      print(passwordController.text);
+                      }
                     },
                     color: Colors.blue,
                     upper: true,

@@ -30,13 +30,14 @@ Widget def_button({
 Widget def_text_form(
         {required var Controller,
         Function? on_sub,
-        Function? on_edit,
+        required Function? on_edit,
         String label = "label" , 
         IconData? preicon ,
         IconData ? sufficon  ,
         InputBorder Border = const OutlineInputBorder(),
         required String ? val_str,
         bool Obsecure_text = false, 
+        Function? on_tab,
 
         }) =>
     TextFormField(
@@ -45,6 +46,9 @@ Widget def_text_form(
           return val_str;
         }
         return null;
+      },
+      onTap: (){
+        on_tab!();
       },
       controller: Controller,
       keyboardType: TextInputType.visiblePassword,
@@ -66,3 +70,7 @@ Widget def_text_form(
         border: OutlineInputBorder(),
       ),
     );
+   
+
+
+   
