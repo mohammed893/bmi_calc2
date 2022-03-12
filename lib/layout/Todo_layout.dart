@@ -16,19 +16,18 @@ class _Todo_layoutState extends State<Todo_layout> {
   void initState() {
     // TODO: implement initState
     super.initState();
-   
+
     Makedb();
-    
   }
 
   var index = 1;
   var Scaf_key = GlobalKey<ScaffoldState>();
-    var Form_key = GlobalKey<FormState>();
+  var Form_key = GlobalKey<FormState>();
 
-  var Task  = TextEditingController();
+  var Task = TextEditingController();
   var Time = TextEditingController();
   bool is_bs = false;
-  
+
   List<Widget> toggled_widgets = [
     Tasks(),
     Done_tasks(),
@@ -45,73 +44,82 @@ class _Todo_layoutState extends State<Todo_layout> {
       ),
       floatingActionButton: IconButton(
         onPressed: () {
-          if(!is_bs){
-           
+          if (!is_bs) {
             is_bs = true;
-            Scaf_key.currentState!.showBottomSheet((context) => 
-            
-            Container(
-              color: Colors.grey[300],padding: EdgeInsets.all(20),
-              child: Form(
-                key: Form_key ,
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    def_text_form(Controller: Task,on_tab: (){},
-                      val_str: "Task name must not be empty!" ,
-                       preicon: Icons.task_alt_outlined ,on_sub: (){},
-                        label: "Task name" , on_edit: (){}) ,
-              
-                        SizedBox(height: 20,), 
-                         
-                    def_text_form(Controller: Time, on_sub: (){Navigator.pop(context);},
-                      val_str: "Task time mus not be empty!" ,
-                       preicon: Icons.lock_clock , 
-                        label: "Task time" , on_edit: (){showTimePicker(context: context,
-                         initialTime: TimeOfDay.now()).then((value) => Time.text = value!.format(context).toString());} ,
-                         on_tab: (){
-                        
-                          showTimePicker(context: context,
-                           initialTime: TimeOfDay.now()).then((value) => Time.text = value!.format(context).toString());
-                        })
-                  ],            
-                ),
-              ),
-              
-            )
-            ,).closed.then((value) => {
-               setState(() {
-              is_bs = false;
-            })
-              
-            });
-            setState(() {
-              
-            });
-            
-
-          }else {
-            if (Form_key.currentState!.validate())
-              {
-              InserttoDB(date: 'non' , status: 'non' , time: Time.text , title: Task.text);
+            Scaf_key.currentState!
+                .showBottomSheet(
+                  (context) => Container(
+                    color: Colors.grey[300],
+                    padding: EdgeInsets.all(20),
+                    child: Form(
+                      key: Form_key,
+                      child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          def_text_form(
+                              Controller: Task,
+                              on_tab: () {},
+                              val_str: "Task name must not be empty!",
+                              preicon: Icons.task_alt_outlined,
+                              on_sub: () {},
+                              label: "Task name",
+                              on_edit: () {}),
+                          SizedBox(
+                            height: 20,
+                          ),
+                          def_text_form(
+                              Controller: Time,
+                              on_sub: () {
+                                Navigator.pop(context);
+                              },
+                              val_str: "Task time mus not be empty!",
+                              preicon: Icons.lock_clock,
+                              label: "Task time",
+                              on_edit: () {
+                                showTimePicker(
+                                        context: context,
+                                        initialTime: TimeOfDay.now())
+                                    .then((value) => Time.text =
+                                        value!.format(context).toString());
+                              },
+                              on_tab: () {
+                                showTimePicker(
+                                        context: context,
+                                        initialTime: TimeOfDay.now())
+                                    .then((value) => Time.text =
+                                        value!.format(context).toString());
+                              })
+                        ],
+                      ),
+                    ),
+                  ),
+                )
+                .closed
+                .then((value) => {
+                      setState(() {
+                        is_bs = false;
+                      })
+                    });
+            setState(() {});
+          } else {
+            if (Form_key.currentState!.validate()) {
+              InserttoDB(
+                  date: 'non',
+                  status: 'non',
+                  time: Time.text,
+                  title: Task.text);
               Navigator.pop(context);
               print('Closed and validated');
-              is_bs = false;     
-              setState(() {
-                
-              }); 
-              }
+              is_bs = false;
+              setState(() {});
+            }
           }
-         
-            
-
-        
         },
         iconSize: 50,
         color: Colors.white,
         icon: CircleAvatar(
           child: Icon(
-            is_bs? Icons.add :Icons.edit,
+            is_bs ? Icons.add : Icons.edit,
             color: Colors.white,
           ),
           backgroundColor: Colors.blue,
@@ -151,24 +159,28 @@ class _Todo_layoutState extends State<Todo_layout> {
           .catchError((Error) {
         print("error ya M7maaaaad");
       });
-    },onOpen: (Database) {print("Database opened");} );
+    }, onOpen: (Database) {
+      print("Database opened");
+    });
   }
 
-  void InserttoDB({required String title ,required String date ,required String time ,required String status}) {
+  void InserttoDB(
+      {required String title,
+      required String date,
+      required String time,
+      required String status}) {
     database =
         openDatabase('Todo.db', version: 1, onCreate: (Database, version) {
       print('data base created');
-    }
-    , onOpen: (Database) {
-      Database.transaction((txn) => txn.rawInsert('INSERT INTO todo (title , date , time , status) VALUES ("$title" , "$date" , "$time" , "$status");')).then((value) => {print('inserted')});
-    }).then((value) => print('Data inserted: $title : $date : $time : $status correctly...')).catchError(
-      (error) => {print("eroe")});
-   
+    }, onOpen: (Database) {
+      Database.transaction((txn) => txn.rawInsert(
+              'INSERT INTO todo (title , date , time , status) VALUES ("$title" , "$date" , "$time" , "$status");'))
+          .then((value) => {print('inserted')});
+    })
+            .then((value) => print(
+                'Data inserted: $title : $date : $time : $status correctly...'))
+            .catchError((error) => {print("eroe")});
   }
-  
-
-
- 
 }
 // Scaf_key.currentState!.showBottomSheet((context) => Container(
 //               color: Colors.grey[300],padding: EdgeInsets.all(20),
