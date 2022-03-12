@@ -48,6 +48,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     }, 
                     
                     controller: emailController,
+                    
                     keyboardType: TextInputType.emailAddress,
                     onFieldSubmitted: (String value) {
                       print(value);

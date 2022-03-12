@@ -4,6 +4,7 @@ import 'package:bmi_calc2/modules/Tasks.dart';
 import 'package:bmi_calc2/modules/bmiscr.dart';
 import 'package:bmi_calc2/shared/components/components.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:sqflite/sqflite.dart';
 
 class Todo_layout extends StatefulWidget {
@@ -26,6 +27,7 @@ class _Todo_layoutState extends State<Todo_layout> {
 
   var Task = TextEditingController();
   var Time = TextEditingController();
+  var Date = TextEditingController();
   bool is_bs = false;
 
   List<Widget> toggled_widgets = [
@@ -55,7 +57,17 @@ class _Todo_layoutState extends State<Todo_layout> {
                       key: Form_key,
                       child: Column(
                         mainAxisSize: MainAxisSize.min,
+                        mainAxisAlignment: MainAxisAlignment.center,
                         children: [
+                          Text('New Task'
+                          , style: TextStyle(
+                            fontSize: 25 , color: Colors.grey[500],
+                            fontWeight: FontWeight.bold , 
+                            shadows: [Shadow(color:Colors.white,blurRadius: 50)]
+
+                          )
+                          ,) , 
+                          SizedBox(height:20),
                           def_text_form(
                               Controller: Task,
                               on_tab: () {},
@@ -69,8 +81,9 @@ class _Todo_layoutState extends State<Todo_layout> {
                           ),
                           def_text_form(
                               Controller: Time,
+                              showcurs: false,
                               on_sub: () {
-                                Navigator.pop(context);
+                               
                               },
                               val_str: "Task time mus not be empty!",
                               preicon: Icons.lock_clock,
@@ -88,6 +101,26 @@ class _Todo_layoutState extends State<Todo_layout> {
                                         initialTime: TimeOfDay.now())
                                     .then((value) => Time.text =
                                         value!.format(context).toString());
+                              }) , 
+                              SizedBox(height: 20,),
+                          def_text_form(
+                              Controller: Date,
+                              showcurs: false,
+                              on_sub: () {
+                                
+                              },
+                              val_str: "Task Date mus not be empty!",
+                              preicon: Icons.date_range ,
+                              label: "Task Date",
+                              on_edit: () {
+                               showDatePicker(context: context, initialDate: DateTime.now(),
+                                firstDate: DateTime.now(), lastDate: DateTime.parse("2022-04-12"));
+                              },
+                              on_tab: () {
+                               showDatePicker(context: context, initialDate: DateTime.now(),
+                                firstDate: DateTime.now(), lastDate: DateTime.parse("2022-04-12")).then((value) => 
+                                Date.text = DateFormat.yMMMd().format(value!));
+                                
                               })
                         ],
                       ),
@@ -104,8 +137,8 @@ class _Todo_layoutState extends State<Todo_layout> {
           } else {
             if (Form_key.currentState!.validate()) {
               InserttoDB(
-                  date: 'non',
-                  status: 'non',
+                  date: Date.text,
+                  status: 'Normal',
                   time: Time.text,
                   title: Task.text);
               Navigator.pop(context);

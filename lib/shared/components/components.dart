@@ -29,6 +29,7 @@ Widget def_button({
 
 Widget def_text_form(
         {required var Controller,
+        bool showcurs = true,
         Function? on_sub,
         required Function? on_edit,
         String label = "label" , 
@@ -50,6 +51,7 @@ Widget def_text_form(
       onTap: (){
         on_tab!();
       },
+      showCursor: showcurs,
       controller: Controller,
       keyboardType: TextInputType.visiblePassword,
       obscureText: Obsecure_text,
