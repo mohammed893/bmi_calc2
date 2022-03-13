@@ -17,8 +17,8 @@ class _Todo_layoutState extends State<Todo_layout> {
   void initState() {
     // TODO: implement initState
     super.initState();
-
-    Makedb();
+  Makedb();
+    
   }
 
   var index = 1;
@@ -35,7 +35,7 @@ class _Todo_layoutState extends State<Todo_layout> {
     Done_tasks(),
     Archived_tasks(),
   ];
-  var database;
+  Database? database;
   List<String> toggled_strings = ['Tasks', 'Done Tasks', 'Archived tasks'];
   @override
   Widget build(BuildContext context) {
@@ -59,15 +59,17 @@ class _Todo_layoutState extends State<Todo_layout> {
                         mainAxisSize: MainAxisSize.min,
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Text('New Task'
-                          , style: TextStyle(
-                            fontSize: 25 , color: Colors.grey[500],
-                            fontWeight: FontWeight.bold , 
-                            shadows: [Shadow(color:Colors.white,blurRadius: 50)]
-
-                          )
-                          ,) , 
-                          SizedBox(height:20),
+                          Text(
+                            'New Task',
+                            style: TextStyle(
+                                fontSize: 25,
+                                color: Colors.grey[500],
+                                fontWeight: FontWeight.bold,
+                                shadows: [
+                                  Shadow(color: Colors.white, blurRadius: 50)
+                                ]),
+                          ),
+                          SizedBox(height: 20),
                           def_text_form(
                               Controller: Task,
                               on_tab: () {},
@@ -82,9 +84,7 @@ class _Todo_layoutState extends State<Todo_layout> {
                           def_text_form(
                               Controller: Time,
                               showcurs: false,
-                              on_sub: () {
-                               
-                              },
+                              on_sub: () {},
                               val_str: "Task time mus not be empty!",
                               preicon: Icons.lock_clock,
                               label: "Task time",
@@ -101,26 +101,32 @@ class _Todo_layoutState extends State<Todo_layout> {
                                         initialTime: TimeOfDay.now())
                                     .then((value) => Time.text =
                                         value!.format(context).toString());
-                              }) , 
-                              SizedBox(height: 20,),
+                              }),
+                          SizedBox(
+                            height: 20,
+                          ),
                           def_text_form(
                               Controller: Date,
                               showcurs: false,
-                              on_sub: () {
-                                
-                              },
+                              on_sub: () {},
                               val_str: "Task Date mus not be empty!",
-                              preicon: Icons.date_range ,
+                              preicon: Icons.date_range,
                               label: "Task Date",
                               on_edit: () {
-                               showDatePicker(context: context, initialDate: DateTime.now(),
-                                firstDate: DateTime.now(), lastDate: DateTime.parse("2022-04-12"));
+                                showDatePicker(
+                                    context: context,
+                                    initialDate: DateTime.now(),
+                                    firstDate: DateTime.now(),
+                                    lastDate: DateTime.parse("2022-04-12"));
                               },
                               on_tab: () {
-                               showDatePicker(context: context, initialDate: DateTime.now(),
-                                firstDate: DateTime.now(), lastDate: DateTime.parse("2022-04-12")).then((value) => 
-                                Date.text = DateFormat.yMMMd().format(value!));
-                                
+                                showDatePicker(
+                                        context: context,
+                                        initialDate: DateTime.now(),
+                                        firstDate: DateTime.now(),
+                                        lastDate: DateTime.parse("2022-04-12"))
+                                    .then((value) => Date.text =
+                                        DateFormat.yMMMd().format(value!));
                               })
                         ],
                       ),
@@ -136,14 +142,16 @@ class _Todo_layoutState extends State<Todo_layout> {
             setState(() {});
           } else {
             if (Form_key.currentState!.validate()) {
-              InserttoDB(
-                  date: Date.text,
-                  status: 'Normal',
-                  time: Time.text,
-                  title: Task.text);
+              InserttoDB(title: 'title', date: 'date', time: 'time', status: 'status');
+              
+
               Navigator.pop(context);
               print('Closed and validated');
               is_bs = false;
+              Task.text = '';
+              Time.text = '';
+              Date.text = '';
+              GetData(database);
               setState(() {});
             }
           }
@@ -183,55 +191,40 @@ class _Todo_layoutState extends State<Todo_layout> {
   }
 
   void Makedb() async {
-    database =
-        openDatabase('Todo.db', version: 1, onCreate: (Database, version) {
+    database = await openDatabase('Todo.db', version: 1,
+        onCreate: (Database, version) {
       print('data base created');
       Database.execute(
-              'CREATE TABLE todo (Id INTEGER PRIMARY KEY , title TEXT  , date TEXT , time TEXT , status TEXT)')
+              'CREATE TABLE tasks (Id INTEGER PRIMARY KEY , title TEXT  , date TEXT , time TEXT , status TEXT)')
           .then((value) => print('table created '))
           .catchError((Error) {
         print("error ya M7maaaaad");
       });
     }, onOpen: (Database) {
       print("Database opened");
+       
+
+      
     });
   }
 
-  void InserttoDB(
+  Future InserttoDB(
       {required String title,
       required String date,
       required String time,
-      required String status}) {
-    database =
-        openDatabase('Todo.db', version: 1, onCreate: (Database, version) {
-      print('data base created');
-    }, onOpen: (Database) {
-      Database.transaction((txn) => txn.rawInsert(
-              'INSERT INTO todo (title , date , time , status) VALUES ("$title" , "$date" , "$time" , "$status");'))
-          .then((value) => {print('inserted')});
-    })
-            .then((value) => print(
-                'Data inserted: $title : $date : $time : $status correctly...'))
-            .catchError((error) => {print("eroe")});
+      required String status}) async{
+    database = await openDatabase('Todo.db',
+        version: 1,
+    );
+    await database!.transaction((txn) async {
+  return await txn.rawInsert(
+      'INSERT INTO todo(title, time, date ,  status) VALUES("some name", "1234", "456", "789")').then((value) { GetData(database);
+      print('Done');});
+     });
+  }
+
+  void GetData(database) async {
+    List<Map> tasks = await database.rawQuery('SELECT * FROM todo ');
+    print(tasks);
   }
 }
-// Scaf_key.currentState!.showBottomSheet((context) => Container(
-//               color: Colors.grey[300],padding: EdgeInsets.all(20),
-//               child: Column(
-//                 mainAxisSize: MainAxisSize.min,
-//                 children: [
-//                   def_text_form(Controller: Task,
-//                     val_str: "Task name" ,
-//                      preicon: Icons.task_alt_outlined ,on_sub: (){Navigator.pop(context);},
-//                       label: "Task name" , on_edit: (){print (Task.text);}) ,
-
-//                       SizedBox(height: 20,), 
-                       
-//                 def_text_form(Controller: Time, on_sub: (){Navigator.pop(context);},
-//                     val_str: "Task time" ,
-//                      preicon: Icons.lock_clock , 
-//                       label: "Task time" , on_edit: (){print (Time.text);})
-//                 ],            
-//               ),
-//             ));
-            
