@@ -7,6 +7,8 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:sqflite/sqflite.dart';
 
+import '../Models/Tasks_model.dart';
+
 class Todo_layout extends StatefulWidget {
   @override
   State<Todo_layout> createState() => _Todo_layoutState();
@@ -29,6 +31,7 @@ class _Todo_layoutState extends State<Todo_layout> {
   var Time = TextEditingController();
   var Date = TextEditingController();
   bool is_bs = false;
+  
 
   List<Widget> toggled_widgets = [
     Tasks(),
@@ -142,7 +145,14 @@ class _Todo_layoutState extends State<Todo_layout> {
             setState(() {});
           } else {
             if (Form_key.currentState!.validate()) {
-              InserttoDB(title: 'title', date: 'date', time: 'time', status: 'status');
+              InserttoDB(title: Task.text, date: Date.text, time: Time.text, status: 'normal').then((value) {
+                GetData(database).then((value) {tasks = value;
+                print(tasks);
+                setState(() {
+                  
+                });});
+
+              });
               
 
               Navigator.pop(context);
@@ -151,7 +161,7 @@ class _Todo_layoutState extends State<Todo_layout> {
               Task.text = '';
               Time.text = '';
               Date.text = '';
-              GetData(database);
+              
               setState(() {});
             }
           }
@@ -202,9 +212,15 @@ class _Todo_layoutState extends State<Todo_layout> {
       });
     }, onOpen: (Database) {
       print("Database opened");
-       
-
+      GetData(Database).then((value) {tasks = value;
       
+      print(tasks);
+      }
+      );
+      
+      //  Database.execute(
+      //         'DELETE FROM todo WHERE 1');
+
     });
   }
 
@@ -218,13 +234,12 @@ class _Todo_layoutState extends State<Todo_layout> {
     );
     await database!.transaction((txn) async {
   return await txn.rawInsert(
-      'INSERT INTO todo(title, time, date ,  status) VALUES("some name", "1234", "456", "789")').then((value) { GetData(database);
+      'INSERT INTO todo(title, time, date , status) VALUES("$title", "$time", "$date", "$status")').then((value) { GetData(database);
       print('Done');});
      });
   }
 
-  void GetData(database) async {
-    List<Map> tasks = await database.rawQuery('SELECT * FROM todo ');
-    print(tasks);
+  Future<List<Map>> GetData(database) async {
+    return tasks = await database.rawQuery('SELECT * FROM todo ');
   }
 }

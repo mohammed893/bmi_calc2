@@ -74,5 +74,16 @@ Widget def_text_form(
     );
    
 
+Widget def_task (
 
+) => Container(
+            child: Padding(
+              padding: const EdgeInsets.all(20.0),
+              child: Row(children: [
+                CircleAvatar(backgroundColor: Colors.blue,radius: 25,),
+                SizedBox(width: 25,),
+                Text('Task name data')
+              ],),
+            ),
+          );
    
