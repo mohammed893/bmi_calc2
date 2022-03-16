@@ -1,6 +1,7 @@
 import 'package:bmi_calc2/layout/Todo_layout.dart';
 // ignore: unused_import
 import 'package:bmi_calc2/modules/bmiscr.dart';
+import 'package:bmi_calc2/modules/counter/counter.dart';
 // ignore: unused_import
 import 'package:bmi_calc2/modules/login.dart';
 import 'package:flutter/material.dart';
@@ -17,7 +18,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
      return MaterialApp(
       
-      home: Todo_layout(),
+      home: CounterScreen(),
     );
   }
 }

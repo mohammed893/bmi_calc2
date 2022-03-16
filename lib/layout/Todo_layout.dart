@@ -6,7 +6,6 @@ import 'package:bmi_calc2/shared/components/components.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:sqflite/sqflite.dart';
-
 import '../Models/Tasks_model.dart';
 
 class Todo_layout extends StatefulWidget {
