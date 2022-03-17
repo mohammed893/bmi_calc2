@@ -2,24 +2,18 @@ import 'package:bloc/bloc.dart';
 import 'package:bmi_calc2/modules/counter/cubit/states.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class CounterCubit extends Cubit<CounterStates>
-{
-  CounterCubit() : super(Counterinitstate());
+class Cubit_cala extends Cubit<StatesMang> {
+  Cubit_cala() : super(InitState());
 
- 
-  static CounterCubit get (context) => BlocProvider.of(context);
-  
+  static Cubit_cala getConte(context) => BlocProvider.of(context);
   int counter = 1;
-  void Minus()
-  {
-    counter --;
-    emit(CounterMinusState());
-
+  void Minus() {
+    counter--;
+    emit(MinusState(counter));
   }
-  void Plus ()
-  {
-    counter ++;
-    emit(CounterPlusState());
 
+  void Plus() {
+    counter++;
+    emit(PlusState(counter));
   }
 }

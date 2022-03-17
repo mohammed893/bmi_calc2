@@ -10,22 +10,25 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 // 1. first class provide widget
 // 2. second class provide state from this widget
 
-class CounterScreen extends StatelessWidget {
- 
+class CounterScreen extends StatelessWidget
+{
+  int counter = 1;
 
   // 1. constructor
   // 2. init state
   // 3. build
 
   @override
-  @override
   Widget build(BuildContext context) {
-  
-    return BlocProvider(
-      create: (BuildContext context) => CounterCubit(),
-      child: BlocConsumer<CounterCubit , CounterStates>(
-        listener: (context , state) {},
-        builder: (context , state ) {
+    return BlocProvider
+    (
+      create: (BuildContext  context) => Cubit_cala(),
+      child: BlocConsumer<Cubit_cala , StatesMang>(
+        listener: (context, state) => {
+          if (state is PlusState) print ("state plus ${state.counter}") , 
+          if (state is MinusState) print ("state Min ${state.counter}")
+        }  
+        ,builder: (context , state) {
           return Scaffold(
           appBar: AppBar(
             title: Text(
@@ -37,9 +40,11 @@ class CounterScreen extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 TextButton(
-                  onPressed: () {
-                    CounterCubit.get(context).Minus();
-                    print(CounterCubit.get(context).counter);
+                  onPressed: ()
+                  {
+                    Cubit_cala.getConte(context).Minus();
+                    print(Cubit_cala.getConte(context).counter);
+                   
                   },
                   child: Text(
                     'MINUS',
@@ -50,7 +55,7 @@ class CounterScreen extends StatelessWidget {
                     horizontal: 20.0,
                   ),
                   child: Text(
-                    '${CounterCubit.get(context).counter}',
+                    '${Cubit_cala.getConte(context).counter}',
                     style: TextStyle(
                       fontSize: 50.0,
                       fontWeight: FontWeight.w900,
@@ -58,9 +63,11 @@ class CounterScreen extends StatelessWidget {
                   ),
                 ),
                 TextButton(
-                  onPressed: () {
-                     CounterCubit.get(context).Plus();
-                    print( CounterCubit.get(context).counter);
+                  onPressed: ()
+                  {
+                    Cubit_cala.getConte(context).Plus();
+                    print(Cubit_cala.getConte(context).counter);
+                    
                   },
                   child: Text(
                     'PLUS',
@@ -71,8 +78,10 @@ class CounterScreen extends StatelessWidget {
           ),
         );
 
-        }, 
+        }
         ),
-    );
-  }
+        
+      );
+    
+}
 }
