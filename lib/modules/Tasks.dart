@@ -1,5 +1,8 @@
 import 'package:bmi_calc2/Models/Tasks_model.dart';
+import 'package:bmi_calc2/shared/Cubit/cubit.dart';
+import 'package:bmi_calc2/shared/Cubit/states.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class Tasks extends StatefulWidget {
   @override
@@ -9,15 +12,24 @@ class Tasks extends StatefulWidget {
 class _TasksState extends State<Tasks> {
   @override
   Widget build(BuildContext context) {
-    return ListView.separated(
-        itemBuilder: (context, index) => def_task(tasks, index),
-        separatorBuilder: (context, index) => SizedBox(
-              height: 10,
-            ),
-        itemCount: tasks.length);
+    var Cubit = CubitTodo.get(context);
+    return BlocConsumer<CubitTodo , todoStates>(
+      listener: (context, state) => {},
+      builder: (context, state) 
+      {return
+        ListView.separated(
+          itemBuilder: (context, index) => def_task(Cubit.tasks,index),
+          separatorBuilder: (context, index) => SizedBox(
+                height: 10,
+              ),
+          itemCount: Cubit.tasks.length);
+      }
+       
+    );
   }
 
   Widget def_task(List<Map> Tasks, int index) {
+    var Cubit = CubitTodo.get(context);
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: Container(
@@ -37,7 +49,7 @@ class _TasksState extends State<Tasks> {
                     padding:
                         const EdgeInsetsDirectional.only(top: 30, start: 10),
                     child: Text(
-                      '${tasks[index]['time']}',
+                      '${Cubit.tasks[index]['time']}',
                       textAlign: TextAlign.center,
                       style: TextStyle(
                           fontSize: 20, textBaseline: TextBaseline.alphabetic),
@@ -52,7 +64,7 @@ class _TasksState extends State<Tasks> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    '${tasks[index]['title']}',
+                    '${Cubit.tasks[index]['title']}',
                     maxLines: 2,
                     overflow: TextOverflow.ellipsis,
                     style: TextStyle(
@@ -63,7 +75,7 @@ class _TasksState extends State<Tasks> {
                 height: 5,
               ),
                   Text(
-                    '${tasks[index]['date']}',
+                    '${Cubit.tasks[index]['date']}',
                     maxLines: 2,
                     overflow: TextOverflow.ellipsis,
                     style: TextStyle(

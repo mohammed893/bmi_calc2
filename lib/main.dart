@@ -1,12 +1,21 @@
+import 'package:bloc/bloc.dart';
 import 'package:bmi_calc2/layout/Todo_layout.dart';
 // ignore: unused_import
 import 'package:bmi_calc2/modules/bmiscr.dart';
 import 'package:bmi_calc2/modules/counter/counter.dart';
 // ignore: unused_import
 import 'package:bmi_calc2/modules/login.dart';
+import 'package:bmi_calc2/shared/Block_obs.dart';
+import 'package:bmi_calc2/shared/Cubit/cubit.dart';
 import 'package:flutter/material.dart';
 
 void main() {
+   BlocOverrides.runZoned(
+    () {
+     CubitTodo();
+    },
+    blocObserver: MyBlocObserver(),
+  );
   runApp(const MyApp());
 }
 
@@ -18,7 +27,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
      return MaterialApp(
       
-      home: CounterScreen(),
+      home: Todo_layout(),
     );
   }
 }
