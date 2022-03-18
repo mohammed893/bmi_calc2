@@ -22,6 +22,10 @@ class Todo_layout extends StatelessWidget {
   //var index = 1;
   var Scaf_key = GlobalKey<ScaffoldState>();
   var Form_key = GlobalKey<FormState>();
+  // hello my name is mohammed 
+
+
+  // sii = 123
 
   var Task = TextEditingController();
   var Time = TextEditingController();
@@ -36,6 +40,7 @@ class Todo_layout extends StatelessWidget {
   // ];
   // Database? database;
   // List<String> toggled_strings = ['Tasks', 'Done Tasks', 'Archived tasks'];
+  //Hello my name is mohammed jmdjkdj
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
@@ -153,13 +158,7 @@ class Todo_layout extends StatelessWidget {
                           date: Date.text,
                           time: Time.text,
                           status: 'normal')
-                      .then((value) {
-                    Cubit.GetData(Cubit.database).then((value) {
-                      Cubit.tasks = value;
-                      print(Cubit.tasks);
-                      // setState(() {});
-                    });
-                  });
+                      ;
           
                   Navigator.pop(context);
                   print('Closed and validated');

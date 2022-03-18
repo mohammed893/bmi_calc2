@@ -1,0 +1,91 @@
+ void Makedb() async {
+    database = await openDatabase('Todo.db', version: 1,
+        onCreate: (Database, version) {
+      print('data base created');
+      Database.execute(
+              'CREATE TABLE tasks (Id INTEGER PRIMARY KEY , title TEXT  , date TEXT , time TEXT , status TEXT)')
+          .then((value) => print('table created '))
+          .catchError((Error) {
+        print("error ya M7maaaaad");
+      });
+    }, onOpen: (Database) {
+      // Database.execute(
+      //          'DELETE FROM todo WHERE 1');
+      print("Database opened");
+      GetAlldata(Database).then((value) => print('all data came create'));
+
+        
+    }).then((value) {
+      emit(CreateDataBaseState());
+      // print ("CreateDataBaseState");
+    });
+  }
+
+  Future InserttoDB(
+      {required String title,
+      required String date,
+      required String time,
+      required String status}) async {
+    database = await openDatabase(
+      'Todo.db',
+      version: 1,
+    );
+    await database!.transaction((txn) async {
+      return await txn
+          .rawInsert(
+              'INSERT INTO todo(title, time, date , status) VALUES("$title", "$time", "$date", "$status")')
+          .then((value) {
+            GetAlldata(database).then((value){  print('all data came inserted');
+            emit(ChangeTodoState());});
+       
+      });
+    });
+  }
+
+  Future<List<Map>> GetData(database) async {
+    return  tasks = await database.rawQuery('SELECT * FROM todo ');
+  }
+  Future<List<Map>> GetDataNormal(database) async {
+    return  normtasks = await database.rawQuery('SELECT * FROM todo WHERE status = "normal" ');
+  }
+  Future<List<Map>> GetDataDone(database) async {
+    return  Donetasks = await database.rawQuery('SELECT * FROM todo WHERE status = "Done";');
+  }
+  Future<List<Map>> GetDataArchived(database) async {
+    return  archtasks = await database.rawQuery('SELECT * FROM todo WHERE status = "Archived";');
+  }
+ 
+  
+  void ChangeIndex(index1)
+  {
+    index = index1;
+    emit(ChangeTodoState());
+    // print ("onChanged");
+    
+    
+  }
+  void Change_isb (bool isShown)
+  {
+    is_bs = isShown;
+    emit(ChangeTodoState());
+  }
+  void updateData (int id , String state) async
+  {
+    database = await openDatabase(
+      'Todo.db',
+      version: 1,
+    );
+    database!.rawUpdate(
+    'UPDATE todo SET status = ? WHERE Id = $id',
+    ['$state']).then((value){
+      GetAlldata(database).then((value) {emit(UpdatedData());});
+    });
+  }
+
+  Future GetAlldata (Database) async
+  {
+    GetDataArchived(Database);
+    GetDataDone(Database);
+    GetDataNormal(Database);
+  }
+}

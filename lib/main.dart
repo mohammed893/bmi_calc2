@@ -10,13 +10,15 @@ import 'package:bmi_calc2/shared/Cubit/cubit.dart';
 import 'package:flutter/material.dart';
 
 void main() {
-   BlocOverrides.runZoned(
+  BlocOverrides.runZoned(
     () {
-     CubitTodo();
+    runApp(const MyApp());
     },
     blocObserver: MyBlocObserver(),
   );
-  runApp(const MyApp());
+   
+  
+  
 }
 
 class MyApp extends StatelessWidget {

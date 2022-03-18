@@ -18,11 +18,11 @@ class _TasksState extends State<Tasks> {
       builder: (context, state) 
       {return
         ListView.separated(
-          itemBuilder: (context, index) => def_task(Cubit.tasks,index),
+          itemBuilder: (context, index) => def_task(Cubit.newTasks,index),
           separatorBuilder: (context, index) => SizedBox(
                 height: 10,
               ),
-          itemCount: Cubit.tasks.length);
+          itemCount: Cubit.newTasks.length);
       }
        
     );
@@ -30,11 +30,13 @@ class _TasksState extends State<Tasks> {
 
   Widget def_task(List<Map> Tasks, int index) {
     var Cubit = CubitTodo.get(context);
+    var model = Tasks;
+   Tasks.forEach((element) {});
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: Container(
         decoration: BoxDecoration(
-            color: Colors.grey[400], borderRadius: BorderRadius.circular(20)),
+            color: Colors.grey.withOpacity(0.3), borderRadius: BorderRadius.circular(20)),
         child: Padding(
           padding: const EdgeInsets.all(20.0),
           child: Row(
@@ -49,7 +51,7 @@ class _TasksState extends State<Tasks> {
                     padding:
                         const EdgeInsetsDirectional.only(top: 30, start: 10),
                     child: Text(
-                      '${Cubit.tasks[index]['time']}',
+                      '${model[index]['time']}',
                       textAlign: TextAlign.center,
                       style: TextStyle(
                           fontSize: 20, textBaseline: TextBaseline.alphabetic),
@@ -60,32 +62,57 @@ class _TasksState extends State<Tasks> {
               SizedBox(
                 width: 10,
               ),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    '${Cubit.tasks[index]['title']}',
-                    maxLines: 2,
-                    overflow: TextOverflow.ellipsis,
-                    style: TextStyle(
-                      fontSize: 20,
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      '${model[index]['title']}',
+                      maxLines: 2,
+                      overflow: TextOverflow.ellipsis,
+                      style: TextStyle(
+                        fontSize: 20,
+                      ),
                     ),
-                  ),
-                  SizedBox(
-                height: 5,
-              ),
-                  Text(
-                    '${Cubit.tasks[index]['date']}',
-                    maxLines: 2,
-                    overflow: TextOverflow.ellipsis,
-                    style: TextStyle(
-                      fontSize: 10,
-                      color: Colors.black
+                    SizedBox(
+                  height: 5,
+                ),
+                    Text(
+                      '${Tasks[index]['date']}',
+                      maxLines: 2,
+                      overflow: TextOverflow.ellipsis,
+                      style: TextStyle(
+                        fontSize: 10,
+                        color: Colors.black
+                      ),
                     ),
-                  ),
+                    
+                    Text(
+                      '${Tasks[index]['status']}',
+                      maxLines: 2,
+                      overflow: TextOverflow.ellipsis,
+                      style: TextStyle(
+                        fontSize: 10,
+                        color: Colors.black
+                      ),
+                    ),
+              
+                  ],
+                ),
+              ) , 
+              IconButton(onPressed: (){
+                Cubit.updateData(Cubit.newTasks[index]['Id'],'Done');
+                // print (Cubit.tasks[index]['Id']);
+              }, icon:Icon(Icons.check_box , color: Colors.green,) ,
+              splashColor: Color.fromARGB(255, 255, 255, 255),splashRadius: 30,),
 
-                ],
-              )
+              SizedBox(width: 20,) , 
+
+              IconButton(onPressed: (){
+                Cubit.updateData(Cubit.newTasks[index]['Id'],'Archived');
+                // print (Cubit.tasks[index]['Id']);
+              }, icon:Icon(Icons.archive_outlined , color: Colors.grey[600],) ,
+              splashColor: Color.fromARGB(255, 255, 255, 255),splashRadius: 30,)
             ],
           ),
         ),

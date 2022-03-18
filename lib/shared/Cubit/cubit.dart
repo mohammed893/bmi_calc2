@@ -10,7 +10,9 @@ import '../../modules/DoneTasks.dart';
 class CubitTodo extends Cubit<todoStates> {
   CubitTodo() : super(initState());
   static CubitTodo get(context) => BlocProvider.of(context);
-  List<Map> tasks = [];
+  List<Map> Archivedtasks = [];
+  List<Map> newTasks = [];
+  List<Map> DoneTasks = [];
    bool is_bs = false;
 
   List<Widget> toggled_widgets = [
@@ -32,14 +34,10 @@ class CubitTodo extends Cubit<todoStates> {
         print("error ya M7maaaaad");
       });
     }, onOpen: (Database) {
-      Database.execute(
-               'DELETE FROM todo WHERE 1');
+      // Database.execute(
+      //          'DELETE FROM todo WHERE 1');
       print("Database opened");
-      GetData(Database).then((value) {
-        tasks = value;
-
-        print(tasks);
-      });
+      GetData1(Database);
 
         
     }).then((value) {
@@ -61,23 +59,38 @@ class CubitTodo extends Cubit<todoStates> {
       return await txn
           .rawInsert(
               'INSERT INTO todo(title, time, date , status) VALUES("$title", "$time", "$date", "$status")')
-          .then((value) {
-        GetData(database);
-        print('Done');
-      });
-    }).then((value){
-       GetData(database).then((value) {
-        tasks = value;
-        // print(tasks);
-        emit(InsertDataState());
-        print ("InsertState");
-      });
+          .then((value){
+            GetData1(database);
+            emit(InsertDataState());
+   });
       
     });
   }
 
-  Future<List<Map>> GetData(database) async {
-    return  tasks = await database.rawQuery('SELECT * FROM todo ');
+  
+
+     void GetData1(database)  {
+      newTasks = [];
+      Archivedtasks = [];
+      DoneTasks = [];
+
+       
+    database.rawQuery('SELECT * FROM todo ').then((value) {
+        
+        value.forEach((element) {
+          if(element['status'] == 'normal'){
+            newTasks.add(element);
+          }else if(element['status'] == 'Done'){
+            DoneTasks.add(element);
+          }else{Archivedtasks.add(element);}
+        });
+        emit(GetDataState());
+        // print('new : $newTasks');
+        // print('arch : $Archivedtasks');
+        // print('done : $DoneTasks');
+      });
+      
+
   }
   void ChangeIndex(index1)
   {
@@ -91,5 +104,20 @@ class CubitTodo extends Cubit<todoStates> {
     is_bs = isShown;
     emit(ChangeTodoState());
   }
+   void updateData (int id , String state) async
+  {
+    database = await openDatabase(
+      'Todo.db',
+      version: 1,
+    );
+    database!.rawUpdate(
+    'UPDATE todo SET status = ? WHERE Id = $id',
+    ['$state']).then((value) {
+          GetData1(database);
+          emit(UpdatedDataState());
+    });
+  }
+ 
   
-}
+  }
+  
