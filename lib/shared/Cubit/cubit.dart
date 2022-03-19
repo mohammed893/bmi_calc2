@@ -117,6 +117,20 @@ class CubitTodo extends Cubit<todoStates> {
           emit(UpdatedDataState());
     });
   }
+  void DeleteData (int id) async
+  {
+    database = await openDatabase(
+      'Todo.db',
+      version: 1,
+    );
+    database!.rawDelete(
+    'DELETE FROM todo WHERE Id = ?',
+    [id]
+    ).then((value) {
+          GetData1(database);
+          emit(DeletedDataState());
+    });
+  }
  
   
   }
