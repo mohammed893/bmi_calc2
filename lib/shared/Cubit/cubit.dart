@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:bloc/bloc.dart';
 import 'package:bmi_calc2/modules/Tasks.dart';
 import 'package:bmi_calc2/shared/Cubit/states.dart';
@@ -13,7 +15,8 @@ class CubitTodo extends Cubit<todoStates> {
   List<Map> Archivedtasks = [];
   List<Map> newTasks = [];
   List<Map> DoneTasks = [];
-   bool is_bs = false;
+  bool is_bs = false;
+    
 
   List<Widget> toggled_widgets = [
     Tasks(),
@@ -24,6 +27,7 @@ class CubitTodo extends Cubit<todoStates> {
   Database? database;
   int index = 1;
   void Makedb() async {
+    
     database = await openDatabase('Todo.db', version: 1,
         onCreate: (Database, version) {
       print('data base created');
@@ -38,11 +42,9 @@ class CubitTodo extends Cubit<todoStates> {
       //          'DELETE FROM todo WHERE 1');
       print("Database opened");
       GetData1(Database);
-
-        
     }).then((value) {
       emit(CreateDataBaseState());
-      print ("CreateDataBaseState");
+      print("CreateDataBaseState");
     });
   }
 
@@ -55,83 +57,71 @@ class CubitTodo extends Cubit<todoStates> {
       'Todo.db',
       version: 1,
     );
+
     await database!.transaction((txn) async {
       return await txn
           .rawInsert(
               'INSERT INTO todo(title, time, date , status) VALUES("$title", "$time", "$date", "$status")')
-          .then((value){
-            GetData1(database);
-            emit(InsertDataState());
-   });
-      
+          .then((value) {
+        GetData1(database);
+        emit(InsertDataState());
+      });
     });
   }
 
-  
+  void GetData1(database) {
+    newTasks = [];
+    Archivedtasks = [];
+    DoneTasks = [];
 
-     void GetData1(database)  {
-      newTasks = [];
-      Archivedtasks = [];
-      DoneTasks = [];
-
-       
     database.rawQuery('SELECT * FROM todo ').then((value) {
-        
-        value.forEach((element) {
-          if(element['status'] == 'normal'){
-            newTasks.add(element);
-          }else if(element['status'] == 'Done'){
-            DoneTasks.add(element);
-          }else{Archivedtasks.add(element);}
-        });
-        emit(GetDataState());
-        // print('new : $newTasks');
-        // print('arch : $Archivedtasks');
-        // print('done : $DoneTasks');
+      value.forEach((element) {
+        if (element['status'] == 'normal') {
+          newTasks.add(element);
+        } else if (element['status'] == 'Done') {
+          DoneTasks.add(element);
+        } else {
+          Archivedtasks.add(element);
+        }
       });
-      
-
+      emit(GetDataState());
+      // print('new : $newTasks');
+      // print('arch : $Archivedtasks');
+      // print('done : $DoneTasks');
+    });
   }
-  void ChangeIndex(index1)
-  {
+
+  void ChangeIndex(index1) {
     index = index1;
     emit(ChangeTodoState());
-    print ("onChanged");
-    
+    print("onChanged");
   }
-  void Change_isb (bool isShown)
-  {
+
+  void Change_isb(bool isShown) {
     is_bs = isShown;
     emit(ChangeTodoState());
   }
-   void updateData (int id , String state) async
-  {
+
+  void updateData(int id, String state) async {
     database = await openDatabase(
       'Todo.db',
       version: 1,
     );
     database!.rawUpdate(
-    'UPDATE todo SET status = ? WHERE Id = $id',
-    ['$state']).then((value) {
-          GetData1(database);
-          emit(UpdatedDataState());
+        'UPDATE todo SET status = ? WHERE Id = $id', ['$state']).then((value) {
+      GetData1(database);
+      emit(UpdatedDataState());
     });
   }
-  void DeleteData (int id) async
-  {
+
+  void DeleteData(int id) async {
     database = await openDatabase(
       'Todo.db',
       version: 1,
     );
-    database!.rawDelete(
-    'DELETE FROM todo WHERE Id = ?',
-    [id]
-    ).then((value) {
-          GetData1(database);
-          emit(DeletedDataState());
+    database!.rawDelete('DELETE FROM todo WHERE Id = ?', [id]).then((value) {
+      GetData1(database);
+      emit(DeletedDataState());
     });
   }
- 
-  
-  }
-  
+}

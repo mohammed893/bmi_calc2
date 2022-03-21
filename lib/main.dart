@@ -1,4 +1,5 @@
 import 'package:bloc/bloc.dart';
+import 'package:bmi_calc2/layout/Franc_layout.dart';
 import 'package:bmi_calc2/layout/Todo_layout.dart';
 // ignore: unused_import
 import 'package:bmi_calc2/modules/bmiscr.dart';
@@ -29,7 +30,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
      return MaterialApp(
       
-      home: Todo_layout(),
+      home: Franc(),
     );
   }
 }
