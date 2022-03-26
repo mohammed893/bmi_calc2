@@ -3,7 +3,7 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 
 List<Map<String, String>> Word = [
-{"un": "theme"},
+  {"un": "theme"},
   {"un": "quartier"},
   {"un": "passant"},
   {"un": "chemin"},
@@ -27,34 +27,27 @@ class _FrancState extends State<Franc> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      floatingActionButton: FloatingActionButton(onPressed: (){
-    Word = [
-  {"un": "theme"},
-  {"un": "quartier"},
-  {"un": "passant"},
-  {"un": "chemin"},
-  {"un": "pont"},
-  {"une": "ville"},
-  {"une": "place"},
-  {"une": "moto"},
-  {"une": "course"},
-  {"une": "voiture"},
-  
-];
- num = 1;
- Tex = 'start';
-        setState(() {
-          
-        });
-
-
-
-
-        
-      } , child: Icon(Icons.restart_alt)),
+      floatingActionButton: FloatingActionButton(
+          onPressed: () {
+            Word = [
+              {"un": "theme"},
+              {"un": "quartier"},
+              {"un": "passant"},
+              {"un": "chemin"},
+              {"un": "pont"},
+              {"une": "ville"},
+              {"une": "place"},
+              {"une": "moto"},
+              {"une": "course"},
+              {"une": "voiture"},
+            ];
+            num = 1;
+            Tex = 'start';
+            setState(() {});
+          },
+          child: Icon(Icons.restart_alt)),
       appBar: AppBar(
         title: Center(child: Text("Francais Words Test")),
-        
       ),
       body: Container(
         width: double.infinity,
@@ -76,51 +69,39 @@ class _FrancState extends State<Franc> {
                   MaterialButton(
                     onPressed: () {
                       print(Word.length);
-                       if (Word.length > 2)
-                     { if (Tex == "start") {
-                        setState(() {
-                          Tex = Word[num].values.toString();
-                          print( Word[num].keys);                                      
-                        });
-                        
-                      }else if(Tex == "False"){
-
-                      }
-                       else {
-                        if(Word[num].keys.toString() == "(un)")
-                        {
+                      if (Word.length > 2) {
+                        if (Tex == "start") {
                           setState(() {
-                            Word.removeAt(num);
-                            num = Random().nextInt(Word.length-1);
-                             Tex = Word[num].values.toString();
-                            
+                            Tex = Word[num].values.toString();
+                            print(Word[num].keys);
                           });
-                         }
-                          else{
+                        } else if (Tex == "False") {
+                        } else {
+                          if (Word[num].keys.toString() == "(un)") {
+                            setState(() {
+                              Word.removeAt(num);
+                              num = Random().nextInt(Word.length - 1);
+                              Tex = Word[num].values.toString();
+                            });
+                          } else {
                             setState(() {
                               Tex = "False";
                             });
-                            
                           }
-                        
-                      }}else if (Word.length == 1){Tex = "Finished";}else{
-
-                        if(Word[num].keys.toString() == "(un)")
-                        {
+                        }
+                      } else if (Word.length == 1) {
+                        Tex = "Finished";
+                      } else {
+                        if (Word[num].keys.toString() == "(un)") {
                           setState(() {
                             Word.removeAt(num);
                             Tex = "Finished";
-                           
                           });
-                         }
-                          else{
-                            setState(() {
-                              Tex = "False";
-                            });
-                            
-                          }
-                        
-                      
+                        } else {
+                          setState(() {
+                            Tex = "False";
+                          });
+                        }
                       }
                     },
                     child: Stack(
@@ -144,51 +125,39 @@ class _FrancState extends State<Franc> {
                   MaterialButton(
                     onPressed: () {
                       print(Word.length);
-                      if (Word.length > 2)
-                    {  if (Tex == "start") {
-                        setState(() {
-                          Tex = Word[num].values.toString();
-                          print( Word[num].keys);                                      
-                        });
-                        
-                      }else if(Tex == "False"){
-                        
-                      } else {
-                        if(Word[num].keys.toString() == "(une)")
-                        {
+                      if (Word.length > 2) {
+                        if (Tex == "start") {
                           setState(() {
-                            Word.removeAt(num);
-                            num = Random().nextInt(Word.length-1);
-                             Tex = Word[num].values.toString();
-                            
+                            Tex = Word[num].values.toString();
+                            print(Word[num].keys);
                           });
-                         }
-                          else{
+                        } else if (Tex == "False") {
+                        } else {
+                          if (Word[num].keys.toString() == "(une)") {
+                            setState(() {
+                              Word.removeAt(num);
+                              num = Random().nextInt(Word.length - 1);
+                              Tex = Word[num].values.toString();
+                            });
+                          } else {
                             setState(() {
                               Tex = "False";
                             });
-                            
                           }
-                        
-                      }}else if (Word.length == 1){Tex = "Finished";}
-                      else{
-
-                        if(Word[num].keys.toString() == "(un)")
-                        {
+                        }
+                      } else if (Word.length == 1) {
+                        Tex = "Finished";
+                      } else {
+                        if (Word[num].keys.toString() == "(un)") {
                           setState(() {
                             Word.removeAt(num);
                             Tex = 'Finished';
-                           
                           });
-                         }
-                          else{
-                            setState(() {
-                              Tex = "False";
-                            });
-                            
-                          }
-                        
-                      
+                        } else {
+                          setState(() {
+                            Tex = "False";
+                          });
+                        }
                       }
                     },
                     child: Stack(
@@ -217,22 +186,3 @@ class _FrancState extends State<Franc> {
     );
   }
 }
-//  if (Word.length > 2){
-//                   Tex = Word[num].values.toString();
-//                   Word.removeAt(num);
-//                   num = Random().nextInt(Word.length-1);
-//                 }else{Tex = 'good';}
-
-// if((Word.length > 2))
-//                         {
-//                           setState(() {
-//                             Tex = Word[num].values.toString();
-//                         Word.removeAt(num);
-//                          num = Random().nextInt(Word.length-1);
-//                           });
-                        
-//                         }else{
-//                           setState(() {
-//                             Tex = 'Finish';
-//                           });
-//                         }
