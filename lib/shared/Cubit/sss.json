@@ -1,0 +1,267 @@
+
+{
+    "status": "ok",
+    "totalResults": 70,
+    "articles": [
+        {
+            "source": {
+                "id": "google-news",
+                "name": "Google News"
+            },
+            "author": null,
+            "title": "Dow Jones Futures: What The Market Rally Needs Now; Six Stocks In Focus, Tesla Rival Xpeng On Tap - Investor's Business Daily",
+            "description": null,
+            "url": "https://news.google.com/__i/rss/rd/articles/CBMimQFodHRwczovL3d3dy5pbnZlc3RvcnMuY29tL21hcmtldC10cmVuZC9zdG9jay1tYXJrZXQtdG9kYXkvZG93LWpvbmVzLWZ1dHVyZXMtd2hhdC10aGUtbWFya2V0LXJhbGx5LW5lZWRzLW5vdy1zaXgtc3RvY2tzLWluLWZvY3VzLXRlc2xhLXJpdmFsLXhwZW5nLW9uLXRhcC_SAQA?oc=5",
+            "urlToImage": null,
+            "publishedAt": "2022-03-26T02:37:00Z",
+            "content": null
+        },
+        {
+            "source": {
+                "id": null,
+                "name": "SFGate"
+            },
+            "author": "Susana Guerrero",
+            "title": "Bay Area’s cult-favorite beer, Pliny the Younger, is back - SF Gate",
+            "description": "Some guests line up at the door as early as 5 a.m. for a pour.",
+            "url": "https://www.sfgate.com/food/article/Bay-Area-favorite-beer-Pliny-the-younger-is-back-17029905.php",
+            "urlToImage": "https://s.hdnux.com/photos/01/10/31/66/18980271/3/rawImage.jpg",
+            "publishedAt": "2022-03-26T00:52:05Z",
+            "content": "Freshly poured glasses of Russian River Brewing Company's Pliny the Younger triple IPA beer sit on a counter at Russian River Brewing Company on Feb. 7, 2014.\r\nJustin Sullivan/Getty Images\r\nOn a chil… [+1934 chars]"
+        },
+        {
+            "source": {
+                "id": null,
+                "name": "CNBC"
+            },
+            "author": "Krystal Hur",
+            "title": "Constellation Energy is a safe buy among nuclear energy stocks, Jim Cramer says - CNBC",
+            "description": "\"I think it's worth paying up for Constellation Energy,\" the \"Mad Money\" host said Friday.",
+            "url": "https://www.cnbc.com/2022/03/25/constellation-energy-is-a-safe-buy-among-nuclear-energy-stocks-jim-cramer-says-.html",
+            "urlToImage": "https://image.cnbcfm.com/api/v1/image/107037032-gettyimages-1359038069-1210-nws-bhr-l-isosc004.jpeg?v=1648247040&w=1920&h=1080",
+            "publishedAt": "2022-03-26T00:17:00Z",
+            "content": "Constellation Energy is a safety pick among nuclear energy stocks whose time to shine on Wall Street has finally come, CNBC's Jim Cramer said Friday.\r\n\"When the [Federal Reserve's] tightening aggress… [+2942 chars]"
+        },
+        {
+            "source": {
+                "id": "reuters",
+                "name": "Reuters"
+            },
+            "author": null,
+            "title": "U.S. FCC adds Russia's Kaspersky, China telecom firms to national security threat list - Reuters",
+            "description": "The Federal Communications Commission (FCC) on Friday added Russia's AO Kaspersky Lab, China Telecom (Americas) Corp <a href=\"https://www.reuters.com/companies/0728.HK\" target=\"_blank\">(0728.HK)</a> and China Mobile International USA <a href=\"https://www.reut…",
+            "url": "https://www.reuters.com/business/media-telecom/us-fcc-adds-ao-kaspersky-lab-china-telecom-firms-national-security-threat-list-2022-03-25/",
+            "urlToImage": "https://www.reuters.com/resizer/p_ruzkS0_b9Exhq2y1a7n3e0f6Q=/1200x628/smart/filters:quality(80)/cloudfront-us-east-2.images.arcpublishing.com/reuters/6IY2W5WNSRIYRP3CRGWLIBE5CE.jpg",
+            "publishedAt": "2022-03-26T00:16:00Z",
+            "content": "WASHINGTON, March 25 (Reuters) - The Federal Communications Commission (FCC) on Friday added Russia's AO Kaspersky Lab, China Telecom (Americas) Corp (0728.HK) and China Mobile International USA (094… [+3336 chars]"
+        },
+        {
+            "source": {
+                "id": null,
+                "name": "MarketWatch"
+            },
+            "author": "Emily Bary",
+            "title": "Here is what AT&T is giving investors in WarnerMedia spinoff, and how it will work - MarketWatch",
+            "description": "Telecoms giant is spinning off media business in combination with Discovery, investors will receive one share in new WarnerBros. Discovery joint venture for roughly every four AT&T shares they own",
+            "url": "https://www.marketwatch.com/story/here-is-what-at-t-is-giving-investors-in-warnermedia-spinoff-and-how-it-will-work-11648249855",
+            "urlToImage": "https://images.mktw.net/im-409147/social",
+            "publishedAt": "2022-03-26T00:10:00Z",
+            "content": "AT&amp;T Inc. detailed its plans for the spinoff of WarnerMedia on Friday, with investors eventually expected to receive a share of the new streaming-media entity for every four AT&amp;T shares they … [+2671 chars]"
+        },
+        {
+            "source": {
+                "id": null,
+                "name": "CNBC"
+            },
+            "author": "Krystal Hur",
+            "title": "Jim Cramer says to buy FAANG stocks next time analysts say they're not investable - CNBC",
+            "description": "When analysts come out in droves to claim FAANG stocks are uninvestable, \"that'll be the perfect moment to do some buying,\" the \"Mad Money\" host said Friday.",
+            "url": "https://www.cnbc.com/2022/03/25/jim-cramer-says-to-buy-faang-stocks-next-time-analysts-say-theyre-not-investable.html",
+            "urlToImage": "https://image.cnbcfm.com/api/v1/image/106967637-16355067422021-10-29t083312z_1084764947_rc2ajq95n0yh_rtrmadp_0_facebook-connect.jpeg?v=1635506774&w=1920&h=1080",
+            "publishedAt": "2022-03-25T23:49:27Z",
+            "content": "Investors should buy FAANG stocks next time they plunge and analysts turn bearish, CNBC's Jim Cramer said Friday.\r\nWhen analysts come out in droves to claim FAANG stocks are uninvestable, \"that'll be… [+2049 chars]"
+        },
+        {
+            "source": {
+                "id": "bloomberg",
+                "name": "Bloomberg"
+            },
+            "author": null,
+            "title": "Sell Stocks on Inflation and Russia War, Calstrs CIO Ailman Says - Bloomberg",
+            "description": null,
+            "url": "https://www.bloomberg.com/tosv2.html?vid=&uuid=033c9d21-acc1-11ec-bf72-7154464d454c&url=L25ld3MvYXJ0aWNsZXMvMjAyMi0wMy0yNS9zZWxsLXN0b2Nrcy1vbi1pbmZsYXRpb24tYW5kLXJ1c3NpYS13YXItY2Fsc3Rycy1jaW8tYWlsbWFuLXNheXM=",
+            "urlToImage": null,
+            "publishedAt": "2022-03-25T23:37:07Z",
+            "content": "To continue, please click the box below to let us know you're not a robot."
+        },
+        {
+            "source": {
+                "id": null,
+                "name": "CNBC"
+            },
+            "author": "Krystal Hur",
+            "title": "Cramer's lightning round: I like Bank of America - CNBC",
+            "description": "\"Mad Money\" host Jim Cramer rings the lightning round bell, which means he's giving his answers to callers' stock questions at rapid speed.",
+            "url": "https://www.cnbc.com/2022/03/25/cramers-lightning-round-i-like-bank-of-america.html",
+            "urlToImage": "https://image.cnbcfm.com/api/v1/image/103507383-Lightning-Round.jpg?v=1459356509&w=1920&h=1080",
+            "publishedAt": "2022-03-25T23:27:30Z",
+            "content": "Bank of America Corp: \"It's one of these companies that is not expensive with very good management that I want to own.\"\r\nAlcoa Corp: \"This thing is up in a straight line. ... That's an unusual parabo… [+232 chars]"
+        },
+        {
+            "source": {
+                "id": "the-wall-street-journal",
+                "name": "The Wall Street Journal"
+            },
+            "author": "Ben Eisen, Anna Hirtenstein",
+            "title": "Stocks Cap Largest Two-Week Gain Since Late 2020 - The Wall Street Journal",
+            "description": "Major indexes finished mixed Friday, a sign that rising rates are still weighing on the stock market",
+            "url": "https://www.wsj.com/articles/global-stocks-markets-dow-update-03-25-2022-11648197425",
+            "urlToImage": "https://images.wsj.net/im-512018/social",
+            "publishedAt": "2022-03-25T23:04:00Z",
+            "content": "U.S. stocks rebounded for a second consecutive week as investors gained confidence that the economy can withstand the escalating war in Ukraine and the Federal Reserves plans to lift interest rates t… [+303 chars]"
+        },
+        {
+            "source": {
+                "id": "the-hill",
+                "name": "The Hill"
+            },
+            "author": "Lexi Lonas",
+            "title": "'Forever chemicals' found in fast food wrappers | TheHill - The Hill",
+            "description": "An ...",
+            "url": "https://thehill.com/policy/healthcare/599827-forever-chemicals-found-in-fast-food-wrappers",
+            "urlToImage": "https://thehill.com/sites/default/files/article_images/mcdonalds_091218getty.png",
+            "publishedAt": "2022-03-25T22:50:54Z",
+            "content": "An analysis by Consumer Reports was released Thursday of forever chemicals that were found in certain fast food wrappers from popular fast food chains.\r\nPFAS are labeled as forever chemicals because … [+1670 chars]"
+        },
+        {
+            "source": {
+                "id": "abc-news",
+                "name": "ABC News"
+            },
+            "author": "The Associated Press",
+            "title": "Nevada casino to pay $8M for serving chemicals, not beer - ABC News",
+            "description": "",
+            "url": "https://abcnews.go.com/US/wireStory/nevada-casino-pay-8m-serving-chemicals-beer-83678688",
+            "urlToImage": "https://s.abcnews.com/images/US/220325_vod_onlocation_hpMain_16x9_992.jpg",
+            "publishedAt": "2022-03-25T22:07:51Z",
+            "content": "LAS VEGAS -- A jury in Las Vegas has awarded $8 million to a middle school special education teacher who sued after being permanently injured when he was served cleaning solvents instead of tap beer … [+1111 chars]"
+        },
+        {
+            "source": {
+                "id": null,
+                "name": "Courthouse News Service"
+            },
+            "author": null,
+            "title": "Jury hands Stone Brewing $56 million in trademark war with MillerCoors - Courthouse News Service",
+            "description": null,
+            "url": "https://www.courthousenews.com/jury-hands-stone-brewing-56-million-in-trademark-war-with-millercoors/",
+            "urlToImage": null,
+            "publishedAt": "2022-03-25T22:06:47Z",
+            "content": null
+        },
+        {
+            "source": {
+                "id": null,
+                "name": "YouTube"
+            },
+            "author": null,
+            "title": "Mortgage rates move higher with 30-year fixed hitting 4.95% - CNBC Television",
+            "description": "CNBC's Diana Olick reports on mortgage rates and housing data. For access to live and exclusive video from CNBC subscribe to CNBC PRO: https://cnb.cx/2NGeIvi...",
+            "url": "https://www.youtube.com/watch?v=x9JhG65VIQE",
+            "urlToImage": "https://i.ytimg.com/vi/x9JhG65VIQE/hqdefault.jpg",
+            "publishedAt": "2022-03-25T21:30:47Z",
+            "content": null
+        },
+        {
+            "source": {
+                "id": null,
+                "name": "The Guardian"
+            },
+            "author": "Mark Sweney",
+            "title": "London-listed miner Petropavlovsk says sanctions prevent it from selling gold - The Guardian",
+            "description": "Shares in Russia-focused firm fall after it is caught up in UK sanctions against Gazprombank",
+            "url": "https://amp.theguardian.com/business/2022/mar/25/london-listed-miner-petropavlovsk-sanctions-gold-russia",
+            "urlToImage": "https://i.guim.co.uk/img/media/87e0ac5f1353b7cc95b06c5e8c93eee417abf414/0_75_3500_2101/master/3500.jpg?width=1200&height=630&quality=85&auto=format&fit=crop&overlay-align=bottom%2Cleft&overlay-width=100p&overlay-base64=L2ltZy9zdGF0aWMvb3ZlcmxheXMvdGctZGVmYXVsdC5wbmc&enable=upscale&s=93e500df0119f589b3a2730ec2128ab8",
+            "publishedAt": "2022-03-25T20:27:00Z",
+            "content": "The Russia-focused mining company Petropavlovsk has said it is unable to offload its gold or repay a loan because of the inclusion of Gazprombank on the UKs sanctions list after the invasion of Ukrai… [+1943 chars]"
+        },
+        {
+            "source": {
+                "id": null,
+                "name": "YouTube"
+            },
+            "author": null,
+            "title": "Huge NVIDIA Hopper H100 GPU, 144-Core CPU, & DGX H100 Systems - Gamers Nexus",
+            "description": "NVIDIA's GTC 2022 event announced the company's H100 (Hopper) GPU and gave updates on its new CPU, Grace, for high-end applications. This precedes the expect...",
+            "url": "https://www.youtube.com/watch?v=dCFm_YKw2WA",
+            "urlToImage": "https://i.ytimg.com/vi/dCFm_YKw2WA/hqdefault.jpg",
+            "publishedAt": "2022-03-25T20:23:50Z",
+            "content": null
+        },
+        {
+            "source": {
+                "id": "engadget",
+                "name": "Engadget"
+            },
+            "author": "https://www.engadget.com/about/editors/bryan-menegus",
+            "title": "Google Fiber workers successfully unionize in Kansas City - Engadget",
+            "description": "In a tally with the National Labor Relations Board (NLRB) this afternoon, Google Fiber customer service workers voted 9 to 1 to form a union.",
+            "url": "https://www.engadget.com/google-fiber-unio-vote-cwa-192732483.html",
+            "urlToImage": "https://s.yimg.com/os/creatr-images/2019-04/f26831c0-606c-11e9-b7e7-134c22f5b67d",
+            "publishedAt": "2022-03-25T20:15:00Z",
+            "content": "In a tally with the National Labor Relations Board (NLRB) this afternoon, Google Fiber customer service workers employed by staffing agency BDS Connected Solutions, which is subcontracted by Alphabet… [+4064 chars]"
+        },
+        {
+            "source": {
+                "id": null,
+                "name": "Usda.gov"
+            },
+            "author": null,
+            "title": "FSIS Issues Public Health Alert for Ready-to-Eat Chicken Meal Kits Due to Misbranding and Undeclared Allergens | Food Safety and Inspection Service - fsis.usda.gov",
+            "description": null,
+            "url": "http://www.fsis.usda.gov/recalls-alerts/fsis-issues-public-health-alert-ready-eat-chicken-meal-kits-due-misbranding-and",
+            "urlToImage": "https://www.fsis.usda.gov/sites/default/files/2021-03/MicrosoftTeams-image.png",
+            "publishedAt": "2022-03-25T20:15:00Z",
+            "content": "WASHINGTON, March 25, 2022 The U.S. Department of Agricultures Food Safety and Inspection Service (FSIS) is issuing a public health alert due to concerns that the chicken breast component of ready-to… [+2477 chars]"
+        },
+        {
+            "source": {
+                "id": null,
+                "name": "Daily Mail"
+            },
+            "author": "Ronny Reyes",
+            "title": "Fed up New Yorkers still want to flee the Big Apple as crime surges - Daily Mail",
+            "description": "The Morning Consult poll, surveyed 9,386 adults working in New York City from February 17 to March 11, with many voicing their frustration over rampant crime in the streets and subways.",
+            "url": "https://www.dailymail.co.uk/news/article-10653093/Fed-New-Yorkers-want-flee-Big-Apple-crime-surges.html",
+            "urlToImage": "https://i.dailymail.co.uk/1s/2022/03/25/20/55811389-0-image-a-42_1648240503263.jpg",
+            "publishedAt": "2022-03-25T20:11:20Z",
+            "content": "New Yorkers working in Manhattan are so fed up with rampant crime that 40 percent said they want to leave the Empire State - with eight out of 10 people saying the Big Apple has gone to hell, accordi… [+10317 chars]"
+        },
+        {
+            "source": {
+                "id": null,
+                "name": "HuffPost"
+            },
+            "author": "Dave Jamieson",
+            "title": "Starbucks Union Notches Another Victory With Eighth Store - HuffPost",
+            "description": "So far the union has filed petitions for elections at more than 150 Starbucks locations.",
+            "url": "https://www.huffpost.com/entry/starbucks-union-arizona_n_623e0fbbe4b0ccd4f51f21d8",
+            "urlToImage": "https://img.huffingtonpost.com/asset/623e11581e0000924d1b11e3.jpeg?ops=1778_1000",
+            "publishedAt": "2022-03-25T19:40:29Z",
+            "content": "A Starbucks in Mesa, Arizona, is the latest to be unionized. \r\nThe union organizing Starbucks workers extended its winning streak on Friday, adding an eighth store to the list of unionized locations.… [+2160 chars]"
+        },
+        {
+            "source": {
+                "id": null,
+                "name": "Electrek"
+            },
+            "author": null,
+            "title": "Tesla issues another over-the-air recall on a small number of cars in the US - Electrek",
+            "description": "Tesla has had to issue another “recall” that is actually just another over-the-air software update on a small number of cars in the US. Lately, Tesla has had to issue a lot of recalls, but most of them were minor issues that were fixed by simple over-the-air …",
+            "url": "https://electrek.co/2022/03/25/tesla-issues-another-over-the-air-recall-us/",
+            "urlToImage": "https://i0.wp.com/electrek.co/wp-content/uploads/sites/3/2020/07/Tesla-2020.24-backup-camera-improvements.jpg?resize=1200%2C628&quality=82&strip=all&ssl=1",
+            "publishedAt": "2022-03-25T19:23:00Z",
+            "content": "Tesla has had to issue another “recall” that is actually just another over-the-air software update on a small number of cars in the US.\r\nLately, Tesla has had to issue a lot of recalls, but most of t… [+1707 chars]"
+        }
+    ]
+}
