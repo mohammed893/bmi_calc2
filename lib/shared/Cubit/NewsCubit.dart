@@ -5,7 +5,6 @@ import 'package:bmi_calc2/modules/Newsapp/antype.dart';
 import 'package:bmi_calc2/shared/Cubit/NewsStates.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
 import '../../modules/Newsapp/Setting.dart';
 
 class NewsCubit extends Cubit<NewsStates>{
