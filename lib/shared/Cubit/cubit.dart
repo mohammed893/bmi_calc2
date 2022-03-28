@@ -16,6 +16,7 @@ class CubitTodo extends Cubit<todoStates> {
   List<Map> newTasks = [];
   List<Map> DoneTasks = [];
   bool is_bs = false;
+  
     
 
   List<Widget> toggled_widgets = [
@@ -23,6 +24,15 @@ class CubitTodo extends Cubit<todoStates> {
     Done_tasks(),
     Archived_tasks(),
   ];
+  bool IsDark = false;
+  void ChangeTheme(){
+    IsDark = !IsDark;
+    emit(ChangeThemeState());
+    print(IsDark);
+  
+
+  }
+
   List<String> toggled_strings = ['Tasks', 'Done Tasks', 'Archived tasks'];
   Database? database;
   int index = 1;

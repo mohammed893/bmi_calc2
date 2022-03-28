@@ -7,3 +7,4 @@ class ChangeTodoState extends todoStates {}
 class UpdatedDataState extends todoStates {}
 class DeletedDataState extends todoStates {}
 class transformData extends todoStates {}
+class ChangeThemeState extends todoStates{}

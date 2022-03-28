@@ -87,4 +87,84 @@ Widget def_task (
               ],),
             ),
           );
-   
+   Widget NewsItem(
+    {required String date,
+    required String Title,
+    required String body,
+    required String urlimg,
+    Cubit ,required context}) {
+  return MaterialButton(
+    onPressed: () {
+    },
+    child: Padding(
+      padding: const EdgeInsets.all(8),
+      child: Container(
+       
+        height: 110,
+        clipBehavior: Clip.antiAlias,
+        decoration: BoxDecoration(
+           color: Colors.grey.withOpacity(0.5),
+           
+           borderRadius: BorderRadius.circular(20)),
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Column(
+              children: [
+                Container(
+                  width: 100,
+                  height: 98,
+                  // decoration: BoxDecoration(
+                  //   image:DecorationImage(fit: )
+                  // ),
+
+                  child: Image.network(
+                    urlimg,
+                    fit: BoxFit.cover,
+                    scale: 7,
+                  ),
+                ),
+                Expanded(child: SizedBox()),
+                Text(
+                  date,
+                  style: TextStyle(fontSize: 10),
+                )
+              ],
+              mainAxisSize: MainAxisSize.min,
+            ),
+            Expanded(
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Container(
+                  height: 110,
+                  child: Column(
+                    mainAxisSize: MainAxisSize.max,
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    // ignore: prefer_const_literals_to_create_immutables
+                    children: [
+                      Text(
+                        Title,
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                        style: Theme.of(context).textTheme.bodyText1
+                      ),
+                      SizedBox(
+                        height: 20,
+                      ),
+                      Text(
+                        body,
+                        maxLines: 2,
+                        overflow: TextOverflow.ellipsis,
+                        style: Theme.of(context).textTheme.bodyText2
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            )
+          ],
+        ),
+      ),
+    ),
+  );
+}
