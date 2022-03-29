@@ -14,30 +14,51 @@ import 'package:bmi_calc2/shared/Cubit/NewsCubit.dart';
 import 'package:bmi_calc2/shared/Cubit/NewsStates.dart';
 import 'package:bmi_calc2/shared/Cubit/cubit.dart';
 import 'package:bmi_calc2/shared/Cubit/states.dart';
+import 'package:bmi_calc2/shared/network/local/cache_helper.dart';
 import 'package:bmi_calc2/shared/network/remote/DIo_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hexcolor/hexcolor.dart';
 
-void main() {
+void main() async{
+  WidgetsFlutterBinding.ensureInitialized();
+  Future<bool?> IsDark ;
+  
+  await CacheHelper.init();
+  IsDark = CacheHelper.getData(key:'isDark');
+  
+  
   BlocOverrides.runZoned(
     () {
-      runApp(const MyApp());
+      runApp(MyApp());
     },
     blocObserver: MyBlocObserver(),
   );
   DioHelper.init();
+  
+  
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+  var theme;
+
+MyApp(){
+ 
+     theme = CacheHelper.getData(key:'isDark').then((value){
+       theme = value;
+     });
+  
+ 
+}
+
 
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+    
     return BlocProvider(
-      create: (BuildContext context) => CubitTodo(),
+      create: (BuildContext context) => CubitTodo()..ChangeTheme(fromCache: theme),
       child: BlocConsumer<CubitTodo , todoStates>(
         listener: ((context, state) {
           

@@ -3,6 +3,7 @@ import 'dart:math';
 import 'package:bloc/bloc.dart';
 import 'package:bmi_calc2/modules/Tasks.dart';
 import 'package:bmi_calc2/shared/Cubit/states.dart';
+import 'package:bmi_calc2/shared/network/local/cache_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sqflite/sqflite.dart';
@@ -24,12 +25,22 @@ class CubitTodo extends Cubit<todoStates> {
     Done_tasks(),
     Archived_tasks(),
   ];
-  bool IsDark = false;
-  void ChangeTheme(){
+  bool IsDark = true;
+
+  void ChangeTheme({bool? fromCache}){
+    if (fromCache == null){
     IsDark = !IsDark;
-    emit(ChangeThemeState());
-    print(IsDark);
-  
+    CacheHelper.setData(key: "isDark" , value: IsDark ).then((value){emit(ChangeThemeState());
+     
+     CacheHelper.getData(key: 'isDark').then((value) {print('value after set $value');});})
+    ;}
+    else{
+      IsDark = fromCache;
+      emit(ChangeThemeState());
+      print('value from cache $fromCache');
+    }
+    
+   
 
   }
 

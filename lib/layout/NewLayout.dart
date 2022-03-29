@@ -26,7 +26,7 @@ class NewLayout extends StatelessWidget {
                   title: Text(cubit.Tytles[cubit.Index]),
                   actions: [IconButton(onPressed: ()
                   {
-                   CubitTodo.get(context).ChangeTheme();
+                   CubitTodo.get(context).ChangeTheme(fromCache: null);
                   }
                   , icon:Icon(CubitTodo.get(context).IsDark?
                   Icons.brightness_7_sharp:

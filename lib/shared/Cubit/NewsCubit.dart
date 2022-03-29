@@ -6,6 +6,7 @@ import 'package:bmi_calc2/modules/Newsapp/Sports.dart';
 import 'package:bmi_calc2/modules/Newsapp/antype.dart';
 import 'package:bmi_calc2/shared/Cubit/NewsStates.dart';
 import 'package:bmi_calc2/shared/Cubit/states.dart';
+import 'package:bmi_calc2/shared/network/local/cache_helper.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -57,7 +58,7 @@ class NewsCubit extends Cubit<NewsStates> {
           
           element['publishedAt'] =
               "${ele_arr[0]}-${ele_arr[1]}-${ele_arr[2].substring(0, 2)}";
-              print(element['publishedAt']);
+              // print(element['publishedAt']);
         } else {
           element['publishedAt'] = '2022/2/2';
         }
@@ -101,7 +102,7 @@ class NewsCubit extends Cubit<NewsStates> {
       SportsNews.forEach((element) {
         if (element['publishedAt'] != null) {
           var ele_arr = element['publishedAt'].toString().split('-');
-          print(ele_arr);
+          // print(ele_arr);
           element['publishedAt'] =
               "${ele_arr[0]}-${ele_arr[1]}-${ele_arr[2].substring(0, 2)}";
         } else {
@@ -114,6 +115,7 @@ class NewsCubit extends Cubit<NewsStates> {
           element['description'] = 'Learn more..........';
         }
       });
+    
       emit(GetDataSports());
     }).catchError((error) {
       print(error.toString());
