@@ -51,7 +51,7 @@ Widget def_text_form(
       },
       onTap: (){
         on_tab!();
-      },
+      },cursorColor: Color.fromARGB(255, 88, 40, 246),
       showCursor: showcurs,
       controller: Controller,
       keyboardType: TextInputType.visiblePassword,
@@ -63,6 +63,8 @@ Widget def_text_form(
         on_edit!();
       },
       decoration: InputDecoration(
+        
+        
         labelText: label,
         prefixIcon: Icon(
           preicon,
@@ -70,7 +72,14 @@ Widget def_text_form(
         suffixIcon: Icon(
           sufficon,
         ),
-        border: OutlineInputBorder(),
+        enabledBorder: OutlineInputBorder(
+          borderSide: const BorderSide(
+            color: Color.fromARGB(255, 40, 246, 109),width: 0.00
+          ),
+          
+        ),border: const OutlineInputBorder(),
+
+        
       ),
     );
    

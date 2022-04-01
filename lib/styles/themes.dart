@@ -4,6 +4,7 @@ import 'package:hexcolor/hexcolor.dart';
 
 
 ThemeData LightTheme =ThemeData(
+
             scaffoldBackgroundColor: Colors.white,
             floatingActionButtonTheme:
                 const FloatingActionButtonThemeData(backgroundColor: Color.fromARGB(255, 88, 40, 246),),
@@ -29,6 +30,7 @@ ThemeData LightTheme =ThemeData(
 
 
 ThemeData DarkTheme = ThemeData(
+  primaryColor: Color.fromARGB(255, 88, 40, 246),
             scaffoldBackgroundColor: HexColor('333739'),
             floatingActionButtonTheme:
                 FloatingActionButtonThemeData(backgroundColor: Colors.white),

@@ -19,142 +19,189 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
-      body: Padding(
-        padding: const EdgeInsets.all(20.0),
-        child: Center(
-          child: SingleChildScrollView(
-            child: Form(
-              key: formkey,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
+      appBar: AppBar(
+        elevation: 0,
+      ),
+      body: SingleChildScrollView(
+        child: Form(
+          key: formkey,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Center(child: Image.asset('lib/SUEZ SHOP.png' , fit: BoxFit.cover,)),
+              Padding(
+                padding: const EdgeInsetsDirectional.only(bottom: 15 , top: 30 ,start: 10),
+                child: Center(
+                  child: Text(
                     'Login',
                     style: TextStyle(
                       fontSize: 40.0,
-                      fontWeight: FontWeight.bold,
+                     
                     ),
                   ),
-                  SizedBox(
-                    height: 40.0,
-                  ),
-                  TextFormField(
-                    validator:(value) {
-                      if (value!.isEmpty){
-                       return "Gmail must not be empty!";
-                      }return null;
+                ),
+              ),
+              SizedBox(
+                height: 40.0,
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 20),
+                child: TextFormField(
+                  validator: (value) {
+                    if (value!.isEmpty) {
+                      return "Gmail must not be empty!";
+                    }
+                    return null;
+                  },
+                  controller: emailController,
+                  keyboardType: TextInputType.emailAddress,
+                  onFieldSubmitted: (String value) {
+                    print(value);
+                  },
+                  onChanged: (String value) {
+                    print(value);
+                  },
+                  decoration: InputDecoration(
+                     labelStyle: TextStyle(color: Color.fromARGB(255, 88, 40, 246) ),
+                    floatingLabelStyle: TextStyle(color: Color.fromARGB(255, 88, 40, 246) 
+                    , fontWeight: FontWeight.bold),
+                
+                    focusColor: Color.fromARGB(255, 88, 40, 246),
+                    labelText: 'Email Address',
+                    prefixIcon: Icon(
+                      Icons.email,color:Color.fromARGB(255, 88, 40, 246)
+                    ),
+                    enabledBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(20),
+                        borderSide: BorderSide(color: const Color.fromARGB(255, 88, 40, 246),width: 2)),
+                    focusedBorder: OutlineInputBorder(
                       
-                    }, 
-                    
-                    controller: emailController,
-                    
-                    keyboardType: TextInputType.emailAddress,
-                    onFieldSubmitted: (String value) {
-                      print(value);
-                    },
-                    onChanged: (String value) {
-                      print(value);
-                    },
-                    decoration: InputDecoration(
-                      labelText: 'Email Address',
-                      prefixIcon: Icon(
-                        Icons.email,
-                      ),
-                      border: OutlineInputBorder(),
+                        borderRadius: BorderRadius.circular(20),
+                        borderSide: BorderSide(
+                          
+
+                            color: const Color.fromARGB(255, 88, 40, 246),width: 2)),
+                    border:
+                        const OutlineInputBorder(borderSide: BorderSide()),
+                  ),
+                ),
+              ),
+              SizedBox(
+                height: 15.0,
+              ),
+              
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 20),
+                child: TextFormField(
+                  
+                  
+                  validator: (value) {
+                    if (value!.isEmpty) {
+                      return "Password must not be empty!";
+                    }
+                    return null;
+                  },
+                  controller: passwordController,
+                  keyboardType: TextInputType.visiblePassword,
+                  obscureText: tap,
+                  onFieldSubmitted: (String value) {
+                    print(value);
+                  },
+                  onChanged: (String value) {
+                    print(value);
+                  },
+                  
+                  decoration: InputDecoration(
+                    labelStyle: TextStyle(color: Color.fromARGB(255, 88, 40, 246) ),
+                    floatingLabelStyle: TextStyle(color: Color.fromARGB(255, 88, 40, 246) 
+                    , fontWeight: FontWeight.bold),
+                    labelText: 'Password ',
+                    focusColor: Color.fromARGB(255, 88, 40, 246),
+                    prefixIcon: Icon(
+                      Icons.lock,
+                      color:Color.fromARGB(255, 88, 40, 246) ,
                     ),
-                  ),
-                  SizedBox(
-                    height: 15.0,
-                  ),
-                  TextFormField(
-                    validator:(value) {
-                      if (value!.isEmpty){
-                       return "Password must not be empty!";
-                      }return null;
+                    suffixIcon: GestureDetector(
+                    
+                      onTap: () {
+                        setState(() {
+                          tap = !tap;
+                        });
+                      },
+                      child:
+                          Icon(tap ? Icons.visibility : Icons.visibility_off ,
+                          color: Color.fromARGB(255, 88, 40, 246) ,
+                         
+                          ),
+                    ),
+                    enabledBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(20),
+                        borderSide: BorderSide(color: const Color.fromARGB(255, 88, 40, 246),width: 2)),
+                    focusedBorder: OutlineInputBorder(
                       
-                    }, 
-                    controller: passwordController,
-                    keyboardType: TextInputType.visiblePassword,
-                    obscureText: tap,
-                    onFieldSubmitted: (String value) {
-                      print(value);
-                    },
-                    onChanged: (String value) {
-                      print(value);
-                    },
-                    decoration: InputDecoration(
-                      labelText: 'Password',
-                      prefixIcon: Icon(
-                        Icons.lock,
-                      ),
-                      suffixIcon: GestureDetector(
-                        onTap: (){
-                          setState(() {
-                            tap = !tap;
-                            
-                          });
-                        },
-                        child: Icon(
-                          tap ? Icons.visibility: Icons.visibility_off
-                        ),
-                      ),
-                      border: OutlineInputBorder(),
-                    ),
+                        borderRadius: BorderRadius.circular(20),
+                        borderSide: BorderSide(
+                          
+
+                            color: const Color.fromARGB(255, 88, 40, 246),width: 2)),
+                    border:
+                        const OutlineInputBorder(borderSide: BorderSide()),
                   ),
-                  SizedBox(
-                    height: 15.0,
-                  ),
-                  def_text_form(Controller: passwordController1 ,Border: UnderlineInputBorder() , 
-                  label: "lol" , on_edit: (){print ("lol");} , on_sub: (){print("XD");} , 
-                  preicon: Icons.sailing , sufficon: Icons.local_airport , val_str: "fucck u " , Obsecure_text: false)
-                  ,
-                   SizedBox(
-                    height: 20.0,
-                  ),
-                  def_button(bor_radius: 20,
+                ),
+              ),
+              SizedBox(
+                height: 15.0,
+              ),
+              SizedBox(
+                height: 20.0,
+              ),
+              Padding(
+                 padding: const EdgeInsets.symmetric(horizontal: 20),
+                child: def_button(
+                    bor_radius: 20,
                     func: () {
-                      if (formkey.currentState!.validate()){
-                      print(emailController.text);
-                      print(passwordController.text);
+                      if (formkey.currentState!.validate()) {
+                        print(emailController.text);
+                        print(passwordController.text);
                       }
                     },
-                    color: Colors.blue,
+                    color: Color.fromARGB(255, 88, 40, 246),
                     upper: true,
-                    title: "Login"
-                  ),
-                   SizedBox(
-                    height: 10.0,
-                  ),
-                   def_button(
-                     bor_radius: 20,
-                    func: () {
-                     
-                    },
-                    color: Colors.green,
+                    title: "Login"),
+              ),
+              SizedBox(
+                height: 10.0,
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 20),
+                child: def_button(
+                    bor_radius: 20,
+                    func: () {},
+                    color: Color.fromARGB(255, 88, 40, 246),
                     upper: true,
-                    title: "Register"
+                    title: "Register"),
+              ),
+              SizedBox(
+                height: 10.0,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    'Don\'t have an account?',
                   ),
-                  SizedBox(
-                    height: 10.0,
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(
-                        'Don\'t have an account?',
+                  TextButton(
+                    onPressed: () {},
+                    child: Text(
+                      'Register Now',style: TextStyle(
+                        color: Color.fromARGB(255, 88, 40, 246)
                       ),
-                      TextButton(
-                        onPressed: () {},
-                        child: Text(
-                          'Register Now',
-                        ),
-                      ),
-                    ],
+                    ),
                   ),
                 ],
               ),
-            ),
+            ],
           ),
         ),
       ),

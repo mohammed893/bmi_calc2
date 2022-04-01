@@ -70,6 +70,7 @@ flutter:
     - lib/assets/brd1.png
     - lib/assets/brd2.png
     - lib/assets/brd3.png
+    - lib/SUEZ SHOP.png
 
 
   # An image asset can refer to one or more resolution-specific "variants", see

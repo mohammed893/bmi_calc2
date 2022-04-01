@@ -1,5 +1,7 @@
 import 'package:bmi_calc2/layout/Franc_layout.dart';
+import 'package:bmi_calc2/modules/login.dart';
 import 'package:bmi_calc2/shared/components/components.dart';
+
 import 'package:flutter/material.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
@@ -50,7 +52,7 @@ class _onBoardingState extends State<onBoarding> {
           actions: [
             TextButton(
                 onPressed: () {
-                  NavigateAndDestroy(context, Franc());
+                  NavigateAndDestroy(context, LoginScreen());
                 },
                 child: Text(
                   'Skip',
@@ -107,7 +109,7 @@ class _onBoardingState extends State<onBoarding> {
                     FloatingActionButton(
                         onPressed: () {
                           if (isLast == true) {
-                            NavigateAndDestroy(context, Franc());
+                            NavigateAndDestroy(context, LoginScreen());
                           } else {
                             Bcont.nextPage(
                                 duration: Duration(milliseconds: 750),
