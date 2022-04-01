@@ -16,19 +16,20 @@ import 'package:bmi_calc2/shared/Cubit/cubit.dart';
 import 'package:bmi_calc2/shared/Cubit/states.dart';
 import 'package:bmi_calc2/shared/network/local/cache_helper.dart';
 import 'package:bmi_calc2/shared/network/remote/DIo_helper.dart';
+import 'package:bmi_calc2/shop_app/onBoarding/onboarding.dart';
+import 'package:bmi_calc2/styles/themes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hexcolor/hexcolor.dart';
 
-void main() async{
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  Future<bool?> IsDark ;
-  
+  Future<bool?> IsDark;
+
   await CacheHelper.init();
-  IsDark = CacheHelper.getData(key:'isDark');
-  
-  
+  IsDark = CacheHelper.getData(key: 'isDark');
+
   BlocOverrides.runZoned(
     () {
       runApp(MyApp());
@@ -36,99 +37,40 @@ void main() async{
     blocObserver: MyBlocObserver(),
   );
   DioHelper.init();
-  
-  
 }
 
 class MyApp extends StatelessWidget {
   var theme;
 
-MyApp(){
- 
-     theme = CacheHelper.getData(key:'isDark').then((value){
-       theme = value;
-     });
-  
- 
-}
-
+  MyApp() {
+    theme = CacheHelper.getData(key: 'isDark').then((value) {
+      theme = value;
+    });
+  }
 
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    
-    return BlocProvider(
-      create: (BuildContext context) => CubitTodo()..ChangeTheme(fromCache: theme),
-      child: BlocConsumer<CubitTodo , todoStates>(
-        listener: ((context, state) {
-          
-        }), builder:((context, state) {
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+            create: (BuildContext context) =>
+                CubitTodo()..ChangeTheme(fromCache: theme)),
+        BlocProvider(create: (BuildContext context) => NewsCubit())
+      ],
+      child: BlocConsumer<CubitTodo, todoStates>(
+        listener: ((context, state) {}),
+        builder: ((context, state) {
           return MaterialApp(
-          debugShowCheckedModeBanner: false,
-          
-          darkTheme: ThemeData(
-            scaffoldBackgroundColor: HexColor('333739'),
-            floatingActionButtonTheme:
-                FloatingActionButtonThemeData(backgroundColor: Colors.white),
-            appBarTheme: AppBarTheme(
-              titleSpacing: 20,
-                backwardsCompatibility: false,
-                systemOverlayStyle: SystemUiOverlayStyle(
-                    statusBarColor:HexColor('333739'),
-                    statusBarIconBrightness: Brightness.light),
-                color: HexColor('333739'),
-                titleTextStyle: TextStyle(
-                  fontSize: 30,
-                )
-                ),
-                bottomNavigationBarTheme: BottomNavigationBarThemeData(
-                  type: BottomNavigationBarType.fixed,
-                  backgroundColor: HexColor('333739'),
-                  selectedItemColor: Colors.deepOrange,
-                  elevation: 20,
-                  unselectedItemColor: Colors.grey
-                  
-                ),
-                textTheme: TextTheme(bodyText1: TextStyle(
-                  color: Colors.white,
-                  fontWeight: FontWeight.bold, fontSize: 15
-                ),bodyText2: TextStyle(
-                  color: Colors.white, fontSize:12
-                ),
-                
-                )
-            
-          ),
-          themeMode: CubitTodo.get(context).IsDark ? ThemeMode.dark : ThemeMode.light,
-          theme: ThemeData(
-            scaffoldBackgroundColor: Colors.white,
-            floatingActionButtonTheme:
-                FloatingActionButtonThemeData(backgroundColor: Colors.deepOrange),
-            appBarTheme: AppBarTheme(
-              titleSpacing: 20,
-                backwardsCompatibility: false,
-                systemOverlayStyle: SystemUiOverlayStyle(
-                    statusBarColor: Colors.red,
-                    statusBarIconBrightness: Brightness.light),
-                color: Colors.red,
-                titleTextStyle: TextStyle(
-                  fontSize: 30,
-                )),
-                textTheme: TextTheme(bodyText1: TextStyle(
-                  color: Colors.black,
-                  fontWeight: FontWeight.bold, fontSize: 15
-                )
-                ,bodyText2:TextStyle(
-                  color: Colors.black, fontSize:12
-                ) )
-                
-          ),
-          home: NewLayout(),
-        );
-          
-        }) ,
-
-        
+            debugShowCheckedModeBanner: false,
+            darkTheme: DarkTheme,
+            themeMode: CubitTodo.get(context).IsDark
+                ? ThemeMode.dark
+                : ThemeMode.light,
+            theme: LightTheme,
+            home: onBoarding(),
+          );
+        }),
       ),
     );
   }

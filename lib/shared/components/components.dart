@@ -168,3 +168,8 @@ Widget def_task (
     ),
   );
 }
+void NavigateAndDestroy(context , Widget){
+  Navigator.pushAndRemoveUntil(context,MaterialPageRoute(builder: (context) => Widget)
+  , (route) => false);
+
+}
