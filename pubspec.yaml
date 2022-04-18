@@ -43,6 +43,10 @@ dependencies:
   hexcolor: ^2.0.6
   shared_preferences: ^2.0.13
   smooth_page_indicator: ^1.0.0+2
+  conditional_builder: ^1.0.2
+  fluttertoast: ^8.0.9
+
+
 
 dev_dependencies:
   flutter_test:

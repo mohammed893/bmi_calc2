@@ -4,11 +4,12 @@ import 'package:bloc/bloc.dart';
 import 'package:bmi_calc2/layout/Franc_layout.dart';
 import 'package:bmi_calc2/layout/NewLayout.dart';
 import 'package:bmi_calc2/layout/Todo_layout.dart';
+import 'package:bmi_calc2/layout/shopLayout/ShopLayout.dart';
 // ignore: unused_import
 import 'package:bmi_calc2/modules/bmiscr.dart';
 import 'package:bmi_calc2/modules/counter/counter.dart';
 // ignore: unused_import
-import 'package:bmi_calc2/modules/login.dart';
+import 'package:bmi_calc2/shop_app/login.dart';
 import 'package:bmi_calc2/shared/Block_obs.dart';
 import 'package:bmi_calc2/shared/Cubit/NewsCubit.dart';
 import 'package:bmi_calc2/shared/Cubit/NewsStates.dart';
@@ -23,12 +24,39 @@ import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hexcolor/hexcolor.dart';
 
+
+Widget homeScr({required var tkn,required bool? brd,required Widget wid1,required Widget wid2 ,required Widget wid3})
+{
+if (brd == null){
+  print(tkn);
+  return wid1;
+  
+}else{
+if(tkn == null)
+{
+  print(tkn);
+return wid2;
+}else {
+  print(tkn);
+  
+  return wid3;
+  
+}
+
+}
+}
+
 void main() async {
+  
   WidgetsFlutterBinding.ensureInitialized();
-  Future<bool?> IsDark;
+  var IsDark;
+  
 
   await CacheHelper.init();
   IsDark = CacheHelper.getData(key: 'isDark');
+  
+  // CacheHelper.ClearData(key: 'onBrd');
+  // CacheHelper.ClearData(key: 'tkn');
 
   BlocOverrides.runZoned(
     () {
@@ -41,11 +69,28 @@ void main() async {
 
 class MyApp extends StatelessWidget {
   var theme;
+  bool ?brd ;
+  var tkn;
 
   MyApp() {
     theme = CacheHelper.getData(key: 'isDark').then((value) {
       theme = value;
     });
+   CacheHelper.getData(key: 'onBrd').then((value) 
+   {
+     brd = value;
+     
+   }
+  
+   );
+   CacheHelper.getData(key: 'token').then((value) 
+   {
+     tkn = value;
+    
+   }
+  
+   );
+   
   }
 
   // This widget is the root of your application.
@@ -68,7 +113,8 @@ class MyApp extends StatelessWidget {
                 ? ThemeMode.dark
                 : ThemeMode.light,
             theme: LightTheme,
-            home: onBoarding(),
+            home: homeScr(brd: brd , tkn: tkn, wid1: onBoarding() ,
+            wid2: LoginScreen() , wid3: ShopLayout()),
           );
         }),
       ),

@@ -1,5 +1,6 @@
 import 'package:bmi_calc2/layout/Franc_layout.dart';
-import 'package:bmi_calc2/modules/login.dart';
+import 'package:bmi_calc2/shared/network/local/cache_helper.dart';
+import 'package:bmi_calc2/shop_app/login.dart';
 import 'package:bmi_calc2/shared/components/components.dart';
 
 import 'package:flutter/material.dart';
@@ -13,6 +14,11 @@ class Datamdl {
 }
 
 bool? isLast;
+void onSkip(context){
+  
+  CacheHelper.SaveData(key: 'onBrd', value: true).then((value) {NavigateAndDestroy(context, LoginScreen());
+  CacheHelper.getData(key: 'onBrd').then((value) => print(value));});
+}
 
 List<Datamdl> datamodel = [
   Datamdl(
@@ -52,7 +58,7 @@ class _onBoardingState extends State<onBoarding> {
           actions: [
             TextButton(
                 onPressed: () {
-                  NavigateAndDestroy(context, LoginScreen());
+                 onSkip(context);
                 },
                 child: Text(
                   'Skip',
@@ -109,7 +115,7 @@ class _onBoardingState extends State<onBoarding> {
                     FloatingActionButton(
                         onPressed: () {
                           if (isLast == true) {
-                            NavigateAndDestroy(context, LoginScreen());
+                           onSkip(context);
                           } else {
                             Bcont.nextPage(
                                 duration: Duration(milliseconds: 750),

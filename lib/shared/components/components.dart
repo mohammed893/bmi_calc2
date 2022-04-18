@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 Widget def_button({
   double width = double.infinity,
@@ -181,4 +182,30 @@ void NavigateAndDestroy(context , Widget){
   Navigator.pushAndRemoveUntil(context,MaterialPageRoute(builder: (context) => Widget)
   , (route) => false);
 
+}
+void NavigateTo(context , Widget){
+  Navigator.push(context, MaterialPageRoute(builder: (context) => Widget),);
+  
+
+}
+void ShopwToast({required String msg ,required ToastStates state}){
+   Fluttertoast.showToast(
+                msg: msg,
+                toastLength: Toast.LENGTH_SHORT,
+                gravity: ToastGravity.BOTTOM,
+                timeInSecForIosWeb: 1,
+                backgroundColor: SwtchToastClr(state),
+                textColor: Colors.white,
+                fontSize: 16.0);
+}
+
+enum ToastStates {SUCC , WARN , ERR}
+Color SwtchToastClr (ToastStates stat)
+{
+  switch (stat) {
+    case ToastStates.SUCC:return Colors.green; 
+    case ToastStates.ERR:return Colors.red; 
+    case ToastStates.WARN:return Colors.yellow; 
+    default:return Colors.green;
+  }
 }
